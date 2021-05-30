@@ -1,20 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
-
-const clearAll = async () => {
-    try {
-      await AsyncStorage.clear()
-    } catch(e) {
-        alert("Internal database error, try in a moment")
-    }
-}
-
 
 const authActions = {
     newUser: (newUser) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('https://webapp-mytinerary.herokuapp.com/api/signup', newUser)
+                const response = await axios.post('', newUser)
 
                 if(response.data.validatorErrors) {   
                     return response.data.validatorErrors //joi validator
@@ -36,7 +26,7 @@ const authActions = {
     logUser: (logUser) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.post('https://webapp-mytinerary.herokuapp.com/api/login', logUser)          
+                const response = await axios.post('', logUser)          
                 if(response.data.success) {
                     dispatch({
                         type: 'ACCESS_USER',
@@ -63,7 +53,7 @@ const authActions = {
     loginWithLS: (userLS) => {
         return async(dispatch, getState) => {
             try {
-                const response = await axios.get('https://webapp-mytinerary.herokuapp.com/api/loginLS', {
+                const response = await axios.get('', {
                     headers: {
                         'Authorization': 'Bearer '+ userLS.token
                     }
