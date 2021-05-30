@@ -33,7 +33,7 @@ const authActions = {
                         payload: response.data.response
                     })              
                 } else {
-                    //aca va a venir el error de pass o mail incorrect // o database error
+                    //aca va a venir el error de pass o mail incorrect // database error
                     alert(response.data.error)
                 }
             } catch {
