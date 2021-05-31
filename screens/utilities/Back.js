@@ -5,12 +5,12 @@ import { Text, View, StyleSheet } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const Back = ({navigateTo}) => {
+const Back = ({navigateTo, color}) => {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.iconContainer}>
-                <Ionicons name="chevron-back" size={32} color="white" onPress={ () => navigation.navigate(navigateTo)} />
+                <Ionicons name="chevron-back" size={32} color={color} onPress={ () => navigation.navigate(navigateTo)} />
             </View>
         </View>
     )
@@ -25,8 +25,7 @@ const styles = StyleSheet.create({
         padding: 6,
     },
     container: {
-        width: '100%',
-        backgroundColor: '#000115'
+        width: '100%'
     }
 })
 

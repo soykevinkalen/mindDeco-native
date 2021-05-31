@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, ImageBackground, Text, Image, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons'; 
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
 
@@ -20,11 +19,15 @@ const Header = (props) => {
             <View style={styles.innerNavbar}>
                 <View style={styles.menuHambContainer}>
                     <Ionicons name="menu-outline" size={35} color="white" onPress={ () => props.props.navigation.openDrawer() } />
-                    <Text style={styles.textMenuHamb}>Hola jefa!</Text>
+                    <Text style={styles.textMenuHamb}>Ya decidete maldita jefa!</Text>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
                     <SimpleLineIcons onPress={ () => setModalOptions(!modalOptions) } style={{marginRight: 16}} name="user" size={22} color="white" />
                     <SimpleLineIcons name="handbag" size={22} color="white" />
+
+                    <View style={styles.itemsInCart}>
+                        <Entypo name="dot-single" size={10} color="red" />
+                    </View>
                     
                     { modalOptions && <View style={styles.modalUserOptions}>
                             <View style={styles.accessContainer}>
@@ -44,6 +47,13 @@ const Header = (props) => {
 }
 
 const styles = StyleSheet.create({
+    itemsInCart: {
+        position: 'absolute',
+        backgroundColor: 'red',
+        borderRadius: 10,
+        right: -4,
+        top: 22
+    },
     modalUserOptions: {
         position: 'absolute',
         right: -12,

@@ -7,20 +7,25 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 const ENTRIES1 = [
   {
     illustration: 'https://i.imgur.com/4EzRXgv.jpg',
+    categoria: 'living'
   },
   {
     illustration: 'https://i.imgur.com/EFuiHfL.jpg',
+    categoria: 'cocina'
   },
   {
     illustration: 'https://i.imgur.com/P1xFN88.jpg',
+    categoria: 'baño'
   },
   {
     illustration: 'https://i.imgur.com/ziBtGrl.jpg',
+    categoria: 'jardin'
   }
 ];
 const windowHeight = Dimensions.get('window').height;
@@ -40,18 +45,17 @@ const HeroCarrousel = props => {
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (
-      <View style={styles.item}>
-        <ParallaxImage
-          source={{uri: item.illustration}}
-          containerStyle={styles.imageContainer}
-          style={styles.image}
-          parallaxFactor={0.2}
-          {...parallaxProps}
-        />
-        <Text style={styles.title} numberOfLines={2}>
-          {item.title}
-        </Text>
-      </View>
+      <TouchableWithoutFeedback onPress={() => console.log('hola')}>
+        <View style={styles.item}>
+          <ParallaxImage
+            source={{uri: item.illustration}}
+            containerStyle={styles.imageContainer}
+            style={styles.image}
+            parallaxFactor={0.2}
+            {...parallaxProps}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 

@@ -9,14 +9,14 @@ const GrillaCategorias = () => {
                     uri: 'https://i.imgur.com/4EzRXgv.jpg'
                 }}>
                     <View style={styles.textGridImageContainer}>
-                        <Text style={styles.textGridImage}>Hola jefa</Text>
+                        <Text style={styles.textGridImage}>Textil</Text>
                     </View>
                 </ImageBackground>
                 <ImageBackground style={styles.imageContainer} source={{
                     uri: 'https://i.imgur.com/4EzRXgv.jpg'
                 }}>
                     <View style={styles.textGridImageContainer}>
-                        <Text style={styles.textGridImage}>Hola jefa</Text>
+                        <Text style={styles.textGridImage}>Muebles</Text>
                     </View>
                 </ImageBackground>
             </View>
@@ -25,14 +25,14 @@ const GrillaCategorias = () => {
                     uri: 'https://i.imgur.com/4EzRXgv.jpg'
                 }}>
                     <View style={styles.textGridImageContainer}>
-                        <Text style={styles.textGridImage}>Hola jefa</Text>
+                        <Text style={styles.textGridImage}>Vajilla</Text>
                     </View>
                 </ImageBackground>
                 <ImageBackground style={styles.imageContainer} source={{
                     uri: 'https://i.imgur.com/4EzRXgv.jpg'
                 }}>
                     <View style={styles.textGridImageContainer}>
-                        <Text style={styles.textGridImage}>Hola jefa</Text>
+                        <Text style={styles.textGridImage}>Decoración</Text>
                     </View>
                 </ImageBackground>
             </View>
