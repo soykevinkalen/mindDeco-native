@@ -1,11 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-const CategoriaItem = ({articulo}) => {
-    console.log(articulo.subcategoria)
+const CategoriaItem = ({subcategoria}) => {
     return (
         <View>
-            <Text>{articulo.subcategoria}</Text>
+            <Text>{subcategoria}</Text>
         </View>
     )
 }
