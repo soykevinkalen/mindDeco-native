@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 import Header from '../Header'
 import HeroCarrousel from './Carrousel'
 import GrillaCategorias from './GrillaCategorias';
 
+import productosActions from '../../redux/actions/productosActions'
+
 const Home = (props) => {
+
+    useEffect(() => {
+        props.obtenerLosProductos()
+    }, [])
+    
     return (
         <>
         <Header props={props} />
@@ -22,4 +30,16 @@ const styles = StyleSheet.create({
       }
 })
 
-export default Home
+const mapStateToProps = state => {
+    return {
+        userLogged: state.authReducer.userLogged,
+        todosLosProductos: state.productosReducer.todosLosProductos
+    }
+}
+
+const mapDispatchToProps = {
+    obtenerLosProductos: productosActions.obtenerLosProductos
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

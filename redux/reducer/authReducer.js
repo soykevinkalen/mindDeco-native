@@ -25,7 +25,7 @@ const storeData = async (value) => {
 
 const authReducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'ACCESS_USER':
+        case 'LOG_USER':
             storeData(action.payload)
             return {
                 ...state,

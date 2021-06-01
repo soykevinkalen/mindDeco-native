@@ -1,76 +1,73 @@
-import axios from "axios";
+import axios from 'axios'
 
 const authActions = {
-    newUser: (newUser) => {
+    createUser: (user) => {
         return async (dispatch, getState) => {
-            try {
-                const response = await axios.post('', newUser)
-
-                if(response.data.validatorErrors) {   
-                    return response.data.validatorErrors //joi validator
-                } else if(!response.data.success) {
-                    alert(response.data.error)
-                } else {
-                    dispatch({
-                        type: 'ACCESS_USER',
-                        payload: response.data.response
-                    })
-                    alert("You've been registered!")
+            try{
+                const response = await axios.post('http://localhost:4000/api/usuario/registrarse', user)
+                if(!response.data.success){
+                    return response.data.errores
                 }
-            } catch {
-                alert("Internal database error, try in a moment")
-            }
-        }
-    },
-
-    logUser: (logUser) => {
-        return async (dispatch, getState) => {
-            try {
-                const response = await axios.post('', logUser)          
-                if(response.data.success) {
-                    dispatch({
-                        type: 'ACCESS_USER',
-                        payload: response.data.response
-                    })              
-                } else {
-                    //aca va a venir el error de pass o mail incorrect // database error
-                    alert(response.data.error)
-                }
-            } catch {
-                alert("Internal database error, try in a moment")
-            }
-        }
-    },
-
-    logOut: () => {
-        return (dispatch, getState) => {
-            dispatch({
-                type: 'LOGOUT_USER'
-            })
-        }
-    },
-
-    loginWithLS: (userLS) => {
-        return async(dispatch, getState) => {
-            try {
-                const response = await axios.get('', {
-                    headers: {
-                        'Authorization': 'Bearer '+ userLS.token
-                    }
-                })
                 dispatch({
-                    type: 'ACCESS_USER',
-                    payload: {
-                        ...response.data.response,
-                        token: userLS.token
+                    type: 'LOG_USER',
+                    payload: response.data.success ? response.data.respuesta : null
+                })
+            }catch(error){
+                console.log(error)
+
+            }
+        }
+    },
+    logInUser: (user) => {
+        return async(dispatch, getState) => {
+            try{
+                const response = await axios.post('http://localhost:4000/api/usuario/loguearse', user)
+                if(!response.data.success){
+                    return response.data.error
+                }
+                console.log(response.data.respuesta)
+                dispatch({
+                    type:'LOG_USER',
+                    payload: response.data.success ? response.data.respuesta : null
+                })
+            }catch(error){
+                console.log(error)
+            }
+        }
+    },
+    logOutUser: () => {
+        return(dispatch, getState) => {
+            try{
+                dispatch({type: 'LOGOUT_USER'})
+            }catch(error){
+                console.log(error)
+            }
+        }
+    },
+    logInForced: (user) => {
+        
+        return async (dispatch, getState) => {
+            try {
+                const respuesta = await axios.get('http://localhost:4000/api/usuario/loginforzado', {
+                    headers: {
+                        'Authorization': 'Bearer '+user.token
                     }
                 })
-            } catch (error) {
+                
+                dispatch({type: 'LOG_USER', payload: {
+                    ...respuesta.data.respuesta,
+                    token: user.token
+                }})
+            } catch(error) {
                 console.log(error)
-                alert("Internal database error, try in a moment")
+                // toast.error('Ops... An error occurred, contact the administrator')  
             }
+            
         }
     }
+    
+
+        
 }
 
-export default authActions;
+export default authActions

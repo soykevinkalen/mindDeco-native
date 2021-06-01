@@ -1,19 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, ImageBackground, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { connect } from 'react-redux';
+
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
 
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
-
-import { connect } from 'react-redux';
-
 import authActions from '../redux/actions/authActions'
+import productosActions from '../redux/actions/productosActions'
+
+import { useNavigation } from '@react-navigation/core';
 
 const Header = (props) => {
+    const navigation = useNavigation();
     const [modalOptions, setModalOptions] = useState(false)
 
+    const handleAccess = () => {
+        navigation.navigate('access')
+        setModalOptions(!modalOptions)
+    }
     return (
         <View style={styles.navbar}>
             <View style={styles.innerNavbar}>
@@ -29,15 +35,20 @@ const Header = (props) => {
                         <Entypo name="dot-single" size={10} color="red" />
                     </View>
                     
+
                     { modalOptions && <View style={styles.modalUserOptions}>
-                            <View style={styles.accessContainer}>
-                                <Text>INICIAR SESION</Text>
-                                <Text>REGISTRARME</Text>
-                            </View>
-                            {/* <View style={styles.accessContainer}>
-                                <Text>MIS PEDIDOS</Text>
-                                <Text>INFO PERSONAL</Text>
-                            </View> */}
+                            <TouchableWithoutFeedback onPress={ handleAccess }>
+                                {
+                                !props.userLogged
+                                ? <View style={styles.accessContainer}>
+                                    <Text>INGRESAR</Text>
+                                </View>
+                                : <View style={styles.accessContainerLogged}>
+                                    <Text>MIS PEDIDOS</Text>
+                                    <Text>INFO PERSONAL</Text>
+                                </View>
+                                }                               
+                            </TouchableWithoutFeedback>
                         </View>
                     }
                 </View>
@@ -71,8 +82,15 @@ const styles = StyleSheet.create({
         zIndex: 999
     },
     accessContainer: {
-        height: 50,
-        display: 'flex',
+        minHeight: 25,
+        minWidth: 110,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        zIndex: 999
+    },
+    accessContainerLogged: {
+        minHeight: 45,
+        minWidth: 110,
         justifyContent: 'space-around',
         alignItems: 'center',
         zIndex: 999
@@ -100,7 +118,7 @@ const styles = StyleSheet.create({
     navbar: {
         width: '100%',
         height: 50,
-        backgroundColor: "#191D1F",
+        backgroundColor: "black",
         justifyContent: 'flex-end',
         paddingBottom: 2,
         zIndex: 888

@@ -9,43 +9,59 @@ import {
   Platform,
   TouchableWithoutFeedback,
 } from 'react-native';
+import { connect } from 'react-redux';
 
-const ENTRIES1 = [
+const windowHeight = Dimensions.get('window').height;
+const {width: screenWidth} = Dimensions.get('window');
+
+import productosActions from '../../redux/actions/productosActions'
+
+const HeroCarrousel = (props) => {
+ 
+  const categorias = [
   {
-    illustration: 'https://i.imgur.com/4EzRXgv.jpg',
+    illustration: 'https://i.pinimg.com/564x/05/cb/e6/05cbe6391d453d94713ec2e674df4f0f.jpg',
+    categoria: 'dormitorio'
+  },
+  {
+    illustration: 'https://i.pinimg.com/564x/fe/88/95/fe8895b3d668271af22ed289bd2df725.jpg',
     categoria: 'living'
   },
   {
-    illustration: 'https://i.imgur.com/EFuiHfL.jpg',
-    categoria: 'cocina'
+    illustration: 'https://cdn.discordapp.com/attachments/819989635764584488/848994218977263626/687f1edb2b31a015b6d7e8ffcc9e6b03.png',
+    categoria: 'cocina & comedor'
   },
   {
-    illustration: 'https://i.imgur.com/P1xFN88.jpg',
+    illustration: 'https://images.pexels.com/photos/6620856/pexels-photo-6620856.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
     categoria: 'baño'
   },
   {
     illustration: 'https://i.imgur.com/ziBtGrl.jpg',
     categoria: 'jardin'
   }
-];
-const windowHeight = Dimensions.get('window').height;
-const {width: screenWidth} = Dimensions.get('window');
+  ];
 
-const HeroCarrousel = props => {
   const [entries, setEntries] = useState([]);
+
   const carouselRef = useRef(null);
 
   const goForward = () => {
     carouselRef.current.snapToNext();
   };
 
+  const handleCategorias = (categoria) => {
+      props.obtenerProductosPorCategoria(categoria)
+  }
+
+  console.log(props)
+  
   useEffect(() => {
-    setEntries(ENTRIES1);
+    setEntries(categorias);
   }, []);
 
   const renderItem = ({item, index}, parallaxProps) => {
     return (
-      <TouchableWithoutFeedback onPress={() => console.log('hola')}>
+      <TouchableWithoutFeedback onPress={ () => handleCategorias(item.categoria) }>
         <View style={styles.item}>
           <ParallaxImage
             source={{uri: item.illustration}}
@@ -77,7 +93,17 @@ const HeroCarrousel = props => {
   );
 };
 
-export default HeroCarrousel;
+const mapStateToProps = state => {
+  return {
+      productosCategoria: state.productosReducer.productosCategoria
+  }
+}
+
+const mapDispatchToProps = {
+  obtenerProductosPorCategoria: productosActions.obtenerProductosPorCategoria
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeroCarrousel);
 
 const styles = StyleSheet.create({
   container: {
