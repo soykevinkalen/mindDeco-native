@@ -6,13 +6,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-
-import authActions from '../redux/actions/authActions'
-import productosActions from '../redux/actions/productosActions'
+import authActions from '../../redux/actions/authActions'
 
 import { useNavigation } from '@react-navigation/core';
 
-const Header = (props) => {
+const BackConCarrito = ({navigateTo, props}) => {
     const navigation = useNavigation();
     const [modalOptions, setModalOptions] = useState(false)
 
@@ -24,7 +22,7 @@ const Header = (props) => {
         <View style={styles.navbar}>
             <View style={styles.innerNavbar}>
                 <View style={styles.menuHambContainer}>
-                    <Ionicons name="menu-outline" size={35} color="white" onPress={ () => props.props.navigation.openDrawer() } />
+                    <Ionicons name="chevron-back" size={32} color='white' onPress={ () => navigation.navigate(navigateTo)} />
                     <Text style={styles.textMenuHamb}>Ya decidete maldita jefa!</Text>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
@@ -146,4 +144,4 @@ const mapDispatchToProps = {
     logOut: authActions.logOut
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(BackConCarrito);

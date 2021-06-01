@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import Header from '../Header'
-import HeroCarrousel from './Carrousel'
+import HeroCarrousel from './HeroCarrousel'
 import GrillaCategorias from './GrillaCategorias';
 
 import productosActions from '../../redux/actions/productosActions'

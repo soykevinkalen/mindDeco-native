@@ -1,23 +1,18 @@
 import React, {useRef, useState, useEffect} from 'react';
 import Carousel, {ParallaxImage} from 'react-native-snap-carousel';
-import {
-  View,
-  Text,
-  Dimensions,
-  StyleSheet,
-  TouchableOpacity,
-  Platform,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View, Dimensions, StyleSheet, Platform, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 
 const windowHeight = Dimensions.get('window').height;
 const {width: screenWidth} = Dimensions.get('window');
 
+import { useNavigation } from '@react-navigation/core';
+
 import productosActions from '../../redux/actions/productosActions'
 
 const HeroCarrousel = (props) => {
- 
+  const navigation = useNavigation();
+
   const categorias = [
   {
     illustration: 'https://i.pinimg.com/564x/05/cb/e6/05cbe6391d453d94713ec2e674df4f0f.jpg',
@@ -36,7 +31,7 @@ const HeroCarrousel = (props) => {
     categoria: 'baño'
   },
   {
-    illustration: 'https://i.imgur.com/ziBtGrl.jpg',
+    illustration: 'https://i.imgur.com/CxDkjrK.jpg',
     categoria: 'jardin'
   }
   ];
@@ -51,10 +46,9 @@ const HeroCarrousel = (props) => {
 
   const handleCategorias = (categoria) => {
       props.obtenerProductosPorCategoria(categoria)
+      navigation.navigate('categoria')
   }
 
-  console.log(props)
-  
   useEffect(() => {
     setEntries(categorias);
   }, []);

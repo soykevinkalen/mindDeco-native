@@ -29,7 +29,6 @@ const SignIn = (props) => {
     const sendData = async () => {
         if(!Object.values(user).some(value => !value)) {
             const response = await props.logUser(user)
-
             if(!response) {
                 setUser({
                     email: '',
