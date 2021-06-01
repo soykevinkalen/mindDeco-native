@@ -1,5 +1,5 @@
 import axios from "axios";
-
+ 
 const authActions = {
     newUser: (newUser) => {
         return async (dispatch, getState) => {
