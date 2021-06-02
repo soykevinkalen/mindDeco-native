@@ -7,22 +7,16 @@ import CategoriaItem from './CategoriaItem'
 const windowHeight = Dimensions.get('window').height;
 
 const Categoria = (props) => {
-    const [articulos, setArticulos] = useState([])
-
-    useEffect(() => {
-        props.productosCategoria.map(articulo => {
-            if(articulos.indexOf(articulo.subcategoria) == -1) {
-                setArticulos([...articulo])
-            }
-        })
-    }, [])
-
+    
+    let subcategorias = props.productosCategoria.map(articulo => articulo.subcategoria)
+    let subsNoRep = Array.from(new Set(subcategorias))
     return (
         <ScrollView style={styles.mainContainer}>
             <BackConCarrito navigateTo='home' props={props} />
             <View style={styles.categoriaItemContainer}>
-                {   articulos.length > 0 && articulos.map((articulo, index) => {
-                        return <CategoriaItem key={index} articulo={articulo} />
+                {   
+                    subsNoRep.map((subcategoria, index) => {
+                        return <CategoriaItem key={index} subcategoria={subcategoria} />
                     })
                 }
             </View>
@@ -31,6 +25,11 @@ const Categoria = (props) => {
 }
 
 const styles = StyleSheet.create({
+    categoriaItemContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: '100%'
+    },
     mainContainer: {
         minHeight: windowHeight,
         width: '100%'

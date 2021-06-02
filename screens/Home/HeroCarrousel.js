@@ -15,20 +15,20 @@ const HeroCarrousel = (props) => {
 
   const categorias = [
   {
-    illustration: 'https://i.pinimg.com/564x/05/cb/e6/05cbe6391d453d94713ec2e674df4f0f.jpg',
+    illustration: 'https://i.imgur.com/olerOyT.jpg',
     categoria: 'dormitorio'
   },
   {
-    illustration: 'https://i.pinimg.com/564x/fe/88/95/fe8895b3d668271af22ed289bd2df725.jpg',
+    illustration: 'https://i.imgur.com/qz6gg3K.jpg',
     categoria: 'living'
   },
   {
-    illustration: 'https://cdn.discordapp.com/attachments/819989635764584488/848994218977263626/687f1edb2b31a015b6d7e8ffcc9e6b03.png',
-    categoria: 'cocina & comedor'
+    illustration: 'https://i.imgur.com/GEidCU8.jpgca',
+    categoria: 'baño'
   },
   {
-    illustration: 'https://images.pexels.com/photos/6620856/pexels-photo-6620856.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
-    categoria: 'baño'
+    illustration: 'https://i.imgur.com/npFG1K3.jpg',
+    categoria: 'cocina & comedor'
   },
   {
     illustration: 'https://i.imgur.com/CxDkjrK.jpg',
