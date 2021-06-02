@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import React, { useEffect } from 'react';
-import { AuthStack, HomeStack, CitiesStack } from './Stack';
+import { AuthStack, HomeStack } from './Stack';
 import { Ionicons } from '@expo/vector-icons'
 import { connect } from 'react-redux';
 
@@ -64,13 +64,13 @@ const MyDrawer = (props) => {
             >
                 <Drawer.Screen name='home' component={ HomeStack } options={{
                     drawerIcon: () => ( <Ionicons name="home-sharp" size={24} color={'#000100'}/> ),
-                    title: 'Home'
+                    title: 'Inicio'
                 }} />
                 
                 {
                     !props.userLogged && <Drawer.Screen name='access' component={ AuthStack } options={{
                         drawerIcon: () => ( <Ionicons name="key" size={24} color={'#000100'}/> ),
-                        title: 'Access'
+                        title: 'Ingresar'
                     }}/>
                 }
                 

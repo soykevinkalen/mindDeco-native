@@ -5,6 +5,7 @@ import Home from '../screens/Home/Home'
 import Access from '../screens/Auth/Access'
 import SignIn from '../screens/Auth/SignIn'
 import SignUp from '../screens/Auth/SignUp'
+import Categoria from '../screens/Categoria/Categoria'
 
 const Stack = createStackNavigator()
 
@@ -12,8 +13,9 @@ export const HomeStack = () => {
     return (    
         <Stack.Navigator screenOptions={{headerShown: false}}>
             <Stack.Screen name='home' component={Home} options={{
-                title: 'Home'
+                title: 'Inicio'
             }} />
+            <Stack.Screen name='categoria' component={Categoria}/>
         </Stack.Navigator>
     )
 }
