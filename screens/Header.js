@@ -54,7 +54,7 @@ const Header = (props) => {
                                         <Text>INFO PERSONAL</Text>
                                     </TouchableWithoutFeedback>
                                     
-                                    <TouchableWithoutFeedback onPress={ props.logOutUser }>
+                                    <TouchableWithoutFeedback onPress={()=> props.logOutUser() }>
                                         <Text>CERRAR SESION</Text>
                                     </TouchableWithoutFeedback>
                                 </View>
