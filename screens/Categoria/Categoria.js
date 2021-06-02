@@ -15,7 +15,7 @@ const Categoria = (props) => {
     
     return (
         <ScrollView style={styles.mainContainer}>
-            <BackConCarrito navigateTo='home' props={props} />
+            <BackConCarrito navigateTo='home'/>
             <View style={styles.categoriaItemContainer}>
                 {   
                     subsNoRep.map((subcategoria, index) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, ImageBackground, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -10,7 +10,7 @@ import authActions from '../../redux/actions/authActions'
 
 import { useNavigation } from '@react-navigation/core';
 
-const BackConCarrito = ({navigateTo, props}) => {
+const BackConCarrito = (props) => {
     const navigation = useNavigation();
     const [modalOptions, setModalOptions] = useState(false)
 
@@ -18,12 +18,15 @@ const BackConCarrito = ({navigateTo, props}) => {
         navigation.navigate('access')
         setModalOptions(!modalOptions)
     }
+
+    console.log(props)
+    
     return (
         <View style={styles.navbar}>
             <View style={styles.innerNavbar}>
                 <View style={styles.menuHambContainer}>
-                    <Ionicons name="chevron-back" size={32} color='white' onPress={ () => navigation.navigate(navigateTo)} />
-                    <Text style={styles.textMenuHamb}>Ya decidete maldita jefa!</Text>
+                    <Ionicons name="chevron-back" size={32} color='white' onPress={ () => navigation.navigate(props.navigateTo)} />
+                    <Text style={styles.textMenuHamb}>{props.userLogged && `Hola ${props.userLogged.nombre}!`}</Text>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
                     <SimpleLineIcons onPress={ () => setModalOptions(!modalOptions) } style={{marginRight: 16}} name="user" size={22} color="white" />
@@ -56,7 +59,7 @@ const BackConCarrito = ({navigateTo, props}) => {
                                         <Text>CERRAR SESION</Text>
                                     </TouchableWithoutFeedback>
                                 </View>
-                                }                               
+                                }
                             </TouchableWithoutFeedback>
                         </View>
                     }
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
     modalUserOptions: {
         position: 'absolute',
         right: -12,
-        top: 40,
+        top: 37,
         backgroundColor: 'white',
         padding: 4,
         shadowColor: "#000",
