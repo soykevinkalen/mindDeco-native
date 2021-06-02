@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import BackConCarrito from '../utilities/BackConCarrito'
 import CategoriaItem from './CategoriaItem'
 
+import authActions from '../../redux/actions/authActions'
+
 const windowHeight = Dimensions.get('window').height;
 
 const Categoria = (props) => {
@@ -45,4 +47,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Categoria);
+const mapDispatchToProps = {
+    logOutUser: authActions.logOutUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categoria);
