@@ -185,13 +185,13 @@ const SignUp = (props) => {
                             </View>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={ registerGoogle }>
+                    {/* <TouchableHighlight onPress={ registerGoogle }>
                         <View style={styles.btnContainer}>
                             <View style={[styles.accessEmailBtn, styles.signIn]}>
                                 <Text style={[styles.textEmail, styles.textSignIn]}> Crear cuenta con Google </Text>
                             </View>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableHighlight> */}
                     <TouchableHighlight onPress={ () => navigation.navigate('signin')}>
                         <View style={styles.btnContainer}>
                             <View style={[styles.accessEmailBtn, styles.signIn]}>

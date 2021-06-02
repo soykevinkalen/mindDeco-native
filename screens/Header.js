@@ -54,7 +54,7 @@ const Header = (props) => {
                                         <Text>INFO PERSONAL</Text>
                                     </TouchableWithoutFeedback>
                                     
-                                    <TouchableWithoutFeedback onPress={ props.logOut }>
+                                    <TouchableWithoutFeedback onPress={ props.logOutUser }>
                                         <Text>CERRAR SESION</Text>
                                     </TouchableWithoutFeedback>
                                 </View>
@@ -143,7 +143,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    logOut: authActions.logOut
+    logOutUser: authActions.logOutUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -40,7 +40,7 @@ const MyDrawer = (props) => {
                     ...userStoraged
                 }
                 if(userStoraged && token) {
-                    props.loginWithLS(userStorageObj)
+                    props.logInForced(userStorageObj)
                 }
             } catch(e) {
                 alert('Internal database error, try in a moment')
@@ -86,7 +86,7 @@ return {
 }
 
 const mapDispatchToProps = {
-    loginWithLS: authActions.loginWithLS
+    logInForced: authActions.logInForced
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyDrawer);

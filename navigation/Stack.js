@@ -28,6 +28,7 @@ export const AuthStack = () => {
             }}/>
             <Stack.Screen name='signin' component={SignIn} />
             <Stack.Screen name='signup' component={SignUp} />
+            
         </Stack.Navigator>
     )
 }

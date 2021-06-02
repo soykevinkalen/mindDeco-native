@@ -14,7 +14,7 @@ const productosActions = {
                     alert('Algo salio mal y seras redigirido a la pagina inicial')
                 }                
             } catch(error) {
-                console.log('obtener todos los productos', error)
+                console.log('Productos actions ln17', error)
                 // alert('Obtener productos Error interno del servidor, intente nuevamente en un momento')
             }
         }

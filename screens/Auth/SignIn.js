@@ -88,11 +88,11 @@ const SignIn = (props) => {
                                 <Text style={[styles.textEmail, styles.textSignIn]}>Ingresar</Text>
                             </View>
                         </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={ registerGoogle }>
+                        {/* <TouchableWithoutFeedback onPress={ registerGoogle }>
                             <View style={[styles.accessEmailBtn, styles.signIn]}>
                                 <Text style={[styles.textEmail, styles.textSignIn]}>Ingresar con Google</Text>
                             </View>
-                        </TouchableWithoutFeedback>
+                        </TouchableWithoutFeedback> */}
                         <TouchableWithoutFeedback onPress={ () => navigation.navigate('signup')}>
                             <View style={styles.accessEmailBtn}>
                                 <Text style={styles.textEmail}>No tengo cuenta aún</Text>

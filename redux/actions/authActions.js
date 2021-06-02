@@ -8,7 +8,7 @@ const authActions = {
                 if(!response.data.success){
                     return response.data.errores
                 }
-                console.log('authActions ln:11',response)
+                
                 dispatch({
                     type: 'LOG_USER',
                     payload: response.data.success ? response.data.respuesta : null
@@ -26,7 +26,7 @@ const authActions = {
                 if(!response.data.success){
                     return response.data.error
                 }
-                console.log(response.data.respuesta)
+                console.log('ln 29 authActions')
                 dispatch({
                     type:'LOG_USER',
                     payload: response.data.success ? response.data.respuesta : null

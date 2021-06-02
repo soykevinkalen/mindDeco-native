@@ -1,17 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View, StyleSheet, Image, Dimensions, TouchableHighlight, TouchableWithoutFeedback, ImageBackground } from 'react-native'
 import { connect } from 'react-redux';
+import * as Google from "expo-google-app-auth";
 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
 import Header from '../Header';
+import authActions from '../../redux/actions/authActions'
 
 
 const windowHeight = Dimensions.get('window').height;
 
 const Access = (props) => {
     const navigation = useNavigation();
-
+    const googleLogeo = async (user) => {
+        const logeo = await props.logInUser({email: user.email, password: 'a'+user.id})
+        return logeo
+    }
+    const registerGoogle = async () => {
+        console.log('ln 18')
+        try {
+            const { type, user } = await Google.logInAsync({
+                iosClientId: "687710738267-g3hisgph5mjb4pvdm0o8g863korgefk9.apps.googleusercontent.com",
+                androidClientId: "687710738267-a2tg95hcdhuv1v0kig9vife0h5de226r.apps.googleusercontent.com",
+          });
+    
+            if (type === "success") {
+                const logeo = await props.logInUser({email: user.email, password: 'a'+user.id})   
+                console.log('logeo ln 30',logeo)
+                if(logeo){
+                    console.log('register ln:32')
+                    await props.createUser({nombre: user.givenName, apellido: user.familyName, email: user.email, password: 'a'+user.id, provincia: 'google', google: true})
+                    
+                }
+            }
+        } catch (error) {
+            console.log("SignIn.js 52 | error ", error);
+        } 
+    }
     return (
         <>
             <Header props={props}/>
@@ -35,7 +61,7 @@ const Access = (props) => {
                                     <View></View>
                                 </View>
                             </TouchableWithoutFeedback>
-                            <TouchableWithoutFeedback onPress={ () => console.log('Has tu magia Kalensinho') }>
+                            <TouchableWithoutFeedback onPress={ () => registerGoogle()}>
                                 <View style={[styles.accessEmailBtn, styles.accessBtnGoogle]}>
                                     <Ionicons style={styles.iconMail} name="logo-google" size={28} color="white" />
                                     <Text style={[styles.textEmail, styles.textGoogle]}>Ingresar con Google</Text>
@@ -57,7 +83,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    
+    logInUser: authActions.logInUser,
+	createUser: authActions.createUser
+
 }
 
 const styles = StyleSheet.create({
