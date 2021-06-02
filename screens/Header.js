@@ -25,7 +25,7 @@ const Header = (props) => {
             <View style={styles.innerNavbar}>
                 <View style={styles.menuHambContainer}>
                     <Ionicons name="menu-outline" size={35} color="white" onPress={ () => props.props.navigation.openDrawer() } />
-                    <Text style={styles.textMenuHamb}>{props.userLogged && `Hola ${props.userLogged.nombre}!`}</Text>
+                    <Text style={styles.textMenuHamb} onPress={()=> props.logOutUser() }>{props.userLogged && `Hola ${props.userLogged.nombre}!`}</Text>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
                     <SimpleLineIcons onPress={ () => setModalOptions(!modalOptions) } style={{marginRight: 16}} name="user" size={22} color="white" />
@@ -45,7 +45,7 @@ const Header = (props) => {
                                         <Text>INGRESAR</Text>
                                     </View>
                                 </TouchableWithoutFeedback>
-                                : <View style={styles.accessContainerLogged}>
+                                :<View style={styles.accessContainerLogged} onPress={()=>console.log('asda')}>
                                     <TouchableWithoutFeedback>
                                         <Text>MIS PEDIDOS</Text>
                                     </TouchableWithoutFeedback>

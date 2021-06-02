@@ -66,10 +66,21 @@ const authActions = {
             }
             
         }
+    },
+    botonGoogle: (user) => {
+        return async (dispatch, getState) => {
+            try{
+                const response = await axios.post("http://192.168.0.5:4000/api/usuario/botonGoogle", user)
+                console.log('authActions.js',response)
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: response.data.respuesta 
+                })
+            }catch(error){
+                console.log('authActions.js',error)
+            }
+        }
     }
-    
-
-        
 }
 
 export default authActions
