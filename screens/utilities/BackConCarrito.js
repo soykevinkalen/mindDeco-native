@@ -29,40 +29,12 @@ const BackConCarrito = (props) => {
                     <Text style={styles.textMenuHamb}>{props.userLogged && `Hola ${props.userLogged.nombre}!`}</Text>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
-                    <SimpleLineIcons onPress={ () => setModalOptions(!modalOptions) } style={{marginRight: 16}} name="user" size={22} color="white" />
                     <SimpleLineIcons name="handbag" size={22} color="white" />
 
                     <View style={styles.itemsInCart}>
                         <Entypo name="dot-single" size={10} color="red" />
                     </View>
-                    
 
-                    { modalOptions && <View style={styles.modalUserOptions}>
-                            <TouchableWithoutFeedback>
-                                {
-                                !props.userLogged
-                                ? <TouchableWithoutFeedback onPress={ handleAccess }>
-                                    <View style={styles.accessContainer}>
-                                        <Text>INGRESAR</Text>
-                                    </View>
-                                </TouchableWithoutFeedback>
-                                : <View style={styles.accessContainerLogged}>
-                                    <TouchableWithoutFeedback>
-                                        <Text>MIS PEDIDOS</Text>
-                                    </TouchableWithoutFeedback>
-
-                                    <TouchableWithoutFeedback>
-                                        <Text>INFO PERSONAL</Text>
-                                    </TouchableWithoutFeedback>
-                                    
-                                    <TouchableWithoutFeedback onPress={ props.logOutUser }>
-                                        <Text>CERRAR SESION</Text>
-                                    </TouchableWithoutFeedback>
-                                </View>
-                                }
-                            </TouchableWithoutFeedback>
-                        </View>
-                    }
                 </View>
             </View>
         </View>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, View, StyleSheet } from 'react-native'
+import { ScrollView, View, StyleSheet, Text } from 'react-native'
 import { connect } from 'react-redux'
 import Header from '../Header'
 
@@ -50,16 +50,43 @@ const Carrito = (props) => {
                     })
                     }
                 </View>
-                
             </ScrollView>
+            <View style={styles.fixedNav}>
+                <Text style={styles.textTotal}>Total: $20000 (10 prod.)</Text>
+                <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
+            </View>
         </>
     )
 }
 
 const styles = StyleSheet.create({
+    textTotal: {
+        color: 'white'
+    },
+    textShop: {
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    fixedNav: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#000000',
+        paddingHorizontal: 20,
+        height: 50
+    },
+    titleContainer: {
+        height: 40,
+        justifyContent: 'center'
+    },
     productContainer: {
         alignItems: 'center',
-        marginVertical: 2
+        marginVertical: 2,
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 24
     }
 })
 
