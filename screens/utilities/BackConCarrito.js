@@ -28,11 +28,9 @@ const BackConCarrito = (props) => {
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
                     <SimpleLineIcons name="handbag" size={22} color="white" />
-
                     <View style={styles.itemsInCart}>
                         <Entypo name="dot-single" size={10} color="red" />
                     </View>
-
                 </View>
             </View>
         </View>

@@ -20,8 +20,6 @@ const Carrito = (props) => {
         if(props.userLogged){
             const array = await props.obtenerProductos(props.userLogged)
             setCarrito(array.carrito)
-        }else{
-            // props.history.push('/')
         }
     }
     

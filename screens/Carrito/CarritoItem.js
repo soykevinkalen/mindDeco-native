@@ -8,24 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 const CarritoItem = (props) => {
     const { cantidad, idProducto: { fotos, nombre, precio, stock } } = props.producto
     const { modificaProducto, borrarProducto } = props
-
-    // const [counter, setCounter] = useState(1)
-
-    // const handleCounter = (action) => {
-    //     if(action === 'remove') { 
-    //         if(counter >= 1) {
-    //             setCounter(counter - 1)
-    //             modificaProducto(props.producto, counter)
-    //         }
-    //     } else {
-    //         setCounter(counter + 1)
-    //         modificaProducto(props.producto, counter)
-    //     }
-    // }
-
-
     return (
-        
         <>
             <View style={styles.mainContainer}> 
                 <ImageBackground style={styles.productImage} source={{
@@ -44,26 +27,26 @@ const CarritoItem = (props) => {
                         <NumericInput totalWidth={85} value={cantidad} textColor={cantidad === stock ? '#cecece' : '#000'} minValue={1} step={1} size={5} maxValue={stock} onChange={
                             (e) => {
                                 if(String(e) === String(stock)){
-                                    alert(`Llegaste al limite de unidades disponibles de ${nombre} `)
+                                    alert(`Llegaste al limite de unidades disponibles`)
                                 }
                                 modificaProducto(props.producto, e)
                             }
                         }
                         />
-
                         <View style={styles.priceContainer}>
-                            <Text>Total: ${precio * cantidad}</Text>
+                            <Text style={styles.price}>Total: ${precio * cantidad}</Text>
                         </View>
                     </View>
-                    
                 </View>
             </View>
-            
         </>
     )
 }
 
 const styles = StyleSheet.create({
+    price: {
+        marginTop: 17
+    },
     totalInnerContainer: {
         justifyContent: 'center'
     },
@@ -122,8 +105,10 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'space-between'
+    },
+    priceContainer: {
+        alignItems: 'baseline'
     },
     productImage: {
         width: 65,

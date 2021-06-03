@@ -11,6 +11,8 @@ import productosActions from '../redux/actions/productosActions'
 
 import { useNavigation } from '@react-navigation/core';
 
+import carritoActions from '../redux/actions/carritoActions'
+
 const Header = (props) => {
     const navigation = useNavigation();
 
@@ -107,12 +109,14 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        userLogged: state.authReducer.userLogged
+        userLogged: state.authReducer.userLogged,
+        obtenerProductos: carritoActions.obtenerProductos,
     }
 }
 
 const mapDispatchToProps = {
     logOutUser: authActions.logOutUser
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
