@@ -6,39 +6,42 @@ import { Ionicons } from '@expo/vector-icons';
 const CarritoItem = (props) => {
     const { cantidad, idProducto: { fotos, nombre, precio } } = props.producto
 
-    console.log(props)
     return (
-        <View style={styles.mainContainer}>
-            <ImageBackground style={styles.productImage} source={{
-                uri: fotos[0]
-            }}></ImageBackground>
-            <View style={styles.infoContainer}>
-                <View style={styles.upperContainer}>
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.title}>{nombre.charAt(0).toUpperCase()+ nombre.slice(1, nombre.legth)}</Text>
+        
+        <>
+            <View style={styles.mainContainer}> 
+                <ImageBackground style={styles.productImage} source={{
+                    uri: fotos[0]
+                }}></ImageBackground>
+                <View style={styles.infoContainer}>
+                    <View style={styles.upperContainer}>
+                        <View style={styles.titleContainer}>
+                            <Text style={styles.title}>{nombre.charAt(0).toUpperCase()+ nombre.slice(1, nombre.legth)}</Text>
+                        </View>
+                        <View style={styles.removeItemContainer}>
+                            <Ionicons name="close-circle-sharp" size={22} color="black" onPress={ () => console.log('hola') } />
+                        </View>
                     </View>
-                    <View style={styles.removeItemContainer}>
-                        <Ionicons name="close-circle-sharp" size={22} color="black" onPress={ () => console.log('hola') } />
+                    <View style={styles.bottomContainer}>
+                        <View style={styles.totalContainer}>
+                            <View style={styles.removeContainer}>
+                                <Text style={styles.remove}>-</Text>
+                            </View>
+                            <View style={styles.totalInnerContainer}>
+                                <Text style={styles.total}>{cantidad}</Text>
+                            </View>
+                            <View style={styles.addContainer}>
+                                <Text style={styles.add}>+</Text>
+                            </View>
+                        </View>
+                        <View style={styles.priceContainer}>
+                            <Text>Total: ${precio * cantidad}</Text>
+                        </View>
                     </View>
                 </View>
-                <View style={styles.bottomContainer}>
-                    <View style={styles.totalContainer}>
-                        <View style={styles.removeContainer}>
-                            <Text style={styles.remove}>-</Text>
-                        </View>
-                        <View style={styles.totalInnerContainer}>
-                            <Text style={styles.total}>{cantidad}</Text>
-                        </View>
-                        <View style={styles.addContainer}>
-                            <Text style={styles.add}>+</Text>
-                        </View>
-                    </View>
-                    <View style={styles.counterContainer}></View>
-                </View>
-
             </View>
-
-        </View>
+            
+        </>
     )
 }
 
@@ -99,6 +102,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center'
     },
+    bottomContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     productImage: {
         width: 65,
         height: 65,
@@ -106,12 +114,23 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         width: '95%',
-        height: 75,
-        backgroundColor: 'red',
-        marginVertical: 5,
-        paddingHorizontal: 2,
+        height: 82,
+        borderRadius: 2,
+        marginVertical: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: 'white',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 5,
+
+        elevation: 4,
     }
 })
 export default CarritoItem;
