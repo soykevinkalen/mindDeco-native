@@ -18,8 +18,6 @@ const BackConCarrito = (props) => {
         navigation.navigate('access')
         setModalOptions(!modalOptions)
     }
-
-    // console.log(props)
     
     return (
         <View style={styles.navbar}>

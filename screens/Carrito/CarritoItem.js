@@ -41,17 +41,6 @@ const CarritoItem = (props) => {
                         </View>
                     </View>
                     <View style={styles.bottomContainer}>
-                        {/* <View style={styles.totalContainer}>
-                            <TouchableWithoutFeedback style={styles.removeContainer} onPress={ () => handleCounter('remove') }>
-                                <Text style={styles.remove}>-</Text>
-                            </TouchableWithoutFeedback>
-                            <View style={styles.totalInnerContainer}>
-                                <Text style={styles.total}>{counter}</Text>
-                            </View>
-                            <TouchableWithoutFeedback style={styles.addContainer} onPress={ () => handleCounter('add') }>
-                                <Text style={styles.add}>+</Text>
-                            </TouchableWithoutFeedback>
-                        </View> */}
                         <NumericInput totalWidth={85} value={cantidad} textColor={cantidad === stock ? '#cecece' : '#000'} minValue={1} step={1} size={5} maxValue={stock} onChange={
                             (e) => {
                                 if(String(e) === String(stock)){
