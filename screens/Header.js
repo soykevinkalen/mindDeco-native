@@ -6,7 +6,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-
 import authActions from '../redux/actions/authActions'
 import productosActions from '../redux/actions/productosActions'
 
