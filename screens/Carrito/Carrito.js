@@ -26,7 +26,6 @@ const Carrito = (props) => {
     }
     
     const modificaProducto = async (producto, cantidad) => {
-        if(!cantidad) return borrarProducto(producto)
         const response = await props.modificarProducto(props.userLogged, producto, cantidad)
         setCarrito(response.carrito)
     }
@@ -52,7 +51,7 @@ const Carrito = (props) => {
                 </View>
             </ScrollView>
             <View style={styles.fixedNav}>
-                <Text style={styles.textTotal}>Total: $20000 (10 prod.)</Text>
+                <Text style={styles.textTotal}>Total: ${precioTotal} ({articulosTotales} prod.)</Text>
                 <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
             </View>
         </>

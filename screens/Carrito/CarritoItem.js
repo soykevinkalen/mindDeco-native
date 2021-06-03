@@ -1,10 +1,28 @@
-import React from 'react'
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, ImageBackground, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
+
+import NumericInput from 'react-native-numeric-input'
 
 import { Ionicons } from '@expo/vector-icons';
 
 const CarritoItem = (props) => {
-    const { cantidad, idProducto: { fotos, nombre, precio } } = props.producto
+    const { cantidad, idProducto: { fotos, nombre, precio, stock } } = props.producto
+    const { modificaProducto, borrarProducto } = props
+
+    // const [counter, setCounter] = useState(1)
+
+    // const handleCounter = (action) => {
+    //     if(action === 'remove') { 
+    //         if(counter >= 1) {
+    //             setCounter(counter - 1)
+    //             modificaProducto(props.producto, counter)
+    //         }
+    //     } else {
+    //         setCounter(counter + 1)
+    //         modificaProducto(props.producto, counter)
+    //     }
+    // }
+
 
     return (
         
@@ -19,25 +37,36 @@ const CarritoItem = (props) => {
                             <Text style={styles.title}>{nombre.charAt(0).toUpperCase()+ nombre.slice(1, nombre.legth)}</Text>
                         </View>
                         <View style={styles.removeItemContainer}>
-                            <Ionicons name="close-circle-sharp" size={22} color="black" onPress={ () => console.log('hola') } />
+                            <Ionicons name="close-circle-sharp" size={22} color="black" onPress={ () =>  borrarProducto(props.producto) } />
                         </View>
                     </View>
                     <View style={styles.bottomContainer}>
-                        <View style={styles.totalContainer}>
-                            <View style={styles.removeContainer}>
+                        {/* <View style={styles.totalContainer}>
+                            <TouchableWithoutFeedback style={styles.removeContainer} onPress={ () => handleCounter('remove') }>
                                 <Text style={styles.remove}>-</Text>
-                            </View>
+                            </TouchableWithoutFeedback>
                             <View style={styles.totalInnerContainer}>
-                                <Text style={styles.total}>{cantidad}</Text>
+                                <Text style={styles.total}>{counter}</Text>
                             </View>
-                            <View style={styles.addContainer}>
+                            <TouchableWithoutFeedback style={styles.addContainer} onPress={ () => handleCounter('add') }>
                                 <Text style={styles.add}>+</Text>
-                            </View>
-                        </View>
+                            </TouchableWithoutFeedback>
+                        </View> */}
+                        <NumericInput totalWidth={85} value={cantidad} textColor={cantidad === stock ? '#cecece' : '#000'} minValue={1} step={1} size={5} maxValue={stock} onChange={
+                            (e) => {
+                                if(String(e) === String(stock)){
+                                    alert(`Llegaste al limite de unidades disponibles de ${nombre} `)
+                                }
+                                modificaProducto(props.producto, e)
+                            }
+                        }
+                        />
+
                         <View style={styles.priceContainer}>
                             <Text>Total: ${precio * cantidad}</Text>
                         </View>
                     </View>
+                    
                 </View>
             </View>
             
