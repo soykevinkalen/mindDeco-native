@@ -13,26 +13,17 @@ const windowHeight = Dimensions.get('window').height;
 
 const Access = (props) => {
     const navigation = useNavigation();
-    const googleLogeo = async (user) => {
-        const logeo = await props.logInUser({email: user.email, password: 'a'+user.id})
-        return logeo
-    }
+ 
     const registerGoogle = async () => {
         console.log('ln 18')
         try {
             const { type, user } = await Google.logInAsync({
                 iosClientId: "687710738267-g3hisgph5mjb4pvdm0o8g863korgefk9.apps.googleusercontent.com",
                 androidClientId: "687710738267-a2tg95hcdhuv1v0kig9vife0h5de226r.apps.googleusercontent.com",
-          });
+        });
     
             if (type === "success") {
-                const logeo = await props.logInUser({email: user.email, password: 'a'+user.id})   
-                console.log('logeo ln 30',logeo)
-                if(logeo){
-                    console.log('register ln:32')
-                    await props.createUser({nombre: user.givenName, apellido: user.familyName, email: user.email, password: 'a'+user.id, provincia: 'google', google: true})
-                    
-                }
+                await props.botonGoogle({nombre: user.givenName, apellido: user.familyName, email: user.email, password: 'a'+user.id, provincia: 'google', google: true})
             }
         } catch (error) {
             console.log("SignIn.js 52 | error ", error);
@@ -83,8 +74,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    logInUser: authActions.logInUser,
-	createUser: authActions.createUser
+    botonGoogle: authActions.botonGoogle
 
 }
 
