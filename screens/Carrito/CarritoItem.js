@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 const CarritoItem = (props) => {
     const { cantidad, idProducto: { fotos, nombre, precio } } = props.producto
 
+    console.log(props)
     return (
         <View style={styles.mainContainer}>
             <ImageBackground style={styles.productImage} source={{

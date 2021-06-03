@@ -4,7 +4,7 @@ const carritoActions = {
     agregarProductoAlCarrito: (user, producto) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.put('http://192.168.0.5:4000/api/carrito',{producto},{
+                const response = await axios.put('http://192.168.100.10:4000/api/carrito',{producto},{
                     headers: {
                         'Authorization': 'Bearer '+user.token
                     }
@@ -22,7 +22,7 @@ const carritoActions = {
     modificarProducto: (user, producto, cantidad) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.put('http://192.168.0.5:4000/api/modificarCantidadProducto',{producto, cantidad},{
+                const response = await axios.put('http://192.168.100.10:4000/api/modificarCantidadProducto',{producto, cantidad},{
                     headers: {
                         'Authorization': 'Bearer '+user.token
                     }
@@ -40,7 +40,7 @@ const carritoActions = {
     obtenerProductos: (user) => {
         return async (dispatch, getState) => {
             try{
-                const response = await axios.get('http://192.168.0.5:4000/api/obtenerProductos',{
+                const response = await axios.get('http://192.168.100.10:4000/api/obtenerProductos',{
                     headers: {
                         'Authorization': 'Bearer '+user.token
                     }
@@ -55,7 +55,7 @@ const carritoActions = {
         return async (dispatch, getState) => {
             try{
                 console.log('user',user)
-                const response = await axios.put('http://192.168.0.5:4000/api/borrarProducto',{producto},{
+                const response = await axios.put('http://192.168.100.10:4000/api/borrarProducto',{producto},{
                     headers: {
                         'Authorization': 'Bearer '+user.token
                     }

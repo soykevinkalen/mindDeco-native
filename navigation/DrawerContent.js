@@ -19,8 +19,7 @@ const DrawerContent = (props) =>{
                     )}
                     label="Inicio"
                     onPress={() => {
-                        props.logOutUser()
-                        props.navigation.navigate('/')}}
+                        props.navigation.navigate('home')}}
             />
             
             {props.user ? <>
@@ -30,7 +29,6 @@ const DrawerContent = (props) =>{
                     )}
                     label="Carrito"
                     onPress={() => {
-                        props.logOutUser()
                         props.navigation.navigate('carrito')}}
                 />
                 <DrawerItem 
@@ -40,7 +38,7 @@ const DrawerContent = (props) =>{
                     label="Cerrar sesion"
                     onPress={() => {
                         props.logOutUser()
-                        props.navigation.navigate('/')}}
+                        props.navigation.navigate('home')}}
                 />
                 </>:
                 <DrawerItem 
@@ -48,7 +46,8 @@ const DrawerContent = (props) =>{
                         <Ionicons name="key" size={24} color={'#000100'}/>
                     )}
                     label="Ingresar"
-                    onPress={() => {props.navigation.navigate('access')}}
+                    onPress={() => {
+                        props.navigation.navigate('access')}}
                 />
             }
         </DrawerContentScrollView>
