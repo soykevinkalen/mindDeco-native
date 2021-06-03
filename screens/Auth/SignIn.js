@@ -58,7 +58,7 @@ const SignIn = (props) => {
                 alert(response)
             }
         } else {
-            alert('All the fields are mandatory')
+            alert('Todos los campos son obligatorios')
         }
     }
     
