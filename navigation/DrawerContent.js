@@ -19,7 +19,6 @@ const DrawerContent = (props) =>{
                     )}
                     label="Inicio"
                     onPress={() => {
-                        props.logOutUser()
                         props.navigation.navigate('/')}}
             />
             
@@ -30,7 +29,6 @@ const DrawerContent = (props) =>{
                     )}
                     label="Carrito"
                     onPress={() => {
-                        props.logOutUser()
                         props.navigation.navigate('carrito')}}
                 />
                 <DrawerItem 
