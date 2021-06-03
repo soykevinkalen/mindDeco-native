@@ -10,13 +10,16 @@ const windowHeight = Dimensions.get('window').height;
 
 const SubCategorias = (props) => {
     const subcategorias = props.productosCategoria.filter(producto => producto.subcategoria === props.route.params.subcategoria)
-    // console.log(subcategorias)
+    // console.log('SubCategorias.js ',subcategorias)
+    
     return (
         <ScrollView style={styles.mainContainer}>
             <BackConCarrito navigateTo='home'/>
+            
             {
-                subcategorias.map(producto => <SubCategoriaItem key={producto._id} producto={producto} />)
+                subcategorias.map(producto => <SubCategoriaItem navigation={props.navigation} key={producto._id} producto={producto} />)
             }
+            
         </ScrollView>
     )
 }

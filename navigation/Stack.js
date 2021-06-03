@@ -8,7 +8,7 @@ import SignUp from '../screens/Auth/SignUp'
 import Categoria from '../screens/Categoria/Categoria'
 import Carrito from '../screens/Carrito/Carrito'
 import SubCategorias from '../screens/Categoria/SubCategorias'
-
+import Producto from '../screens/Categoria/Producto'
 const Stack = createStackNavigator()
 
 export const HomeStack = () => {
@@ -19,6 +19,7 @@ export const HomeStack = () => {
             }} />
             <Stack.Screen name='categoria' component={Categoria}/>
             <Stack.Screen name='subcategorias' component={SubCategorias}/>
+            <Stack.Screen name='producto' component={Producto}/>
         </Stack.Navigator>
     )
 }
