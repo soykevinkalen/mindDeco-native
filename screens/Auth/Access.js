@@ -13,10 +13,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const Access = (props) => {
     const navigation = useNavigation();
-    const googleLogeo = async (user) => {
-        const logeo = await props.logInUser(user)
-        return logeo
-    }
+ 
     const registerGoogle = async () => {
         console.log('ln 18')
         try {
@@ -26,9 +23,7 @@ const Access = (props) => {
         });
     
             if (type === "success") {
-                  
                 await props.botonGoogle({nombre: user.givenName, apellido: user.familyName, email: user.email, password: 'a'+user.id, provincia: 'google', google: true})
-                
             }
         } catch (error) {
             console.log("SignIn.js 52 | error ", error);

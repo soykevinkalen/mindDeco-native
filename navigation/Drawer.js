@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import React, { useEffect } from 'react';
 import { AuthStack, CarritoStack, HomeStack } from './Stack';
 import { Ionicons } from '@expo/vector-icons'
 import { connect } from 'react-redux';
-
+import DrawerContent from './DrawerContent'
 import authActions from '../redux/actions/authActions'
 
 const Drawer = createDrawerNavigator();
@@ -56,11 +56,11 @@ const MyDrawer = (props) => {
     return(
         <>  
             <Drawer.Navigator
-                drawerType={'back'}
                 drawerStyle={{
                     backgroundColor: '#eeeeee',
                     width: '50%'
                 }}
+                drawerContent={props => <DrawerContent {...props} />}
             >
                 <Drawer.Screen name='home' component={ HomeStack } options={{
                     drawerIcon: () => ( <Ionicons name="home-sharp" size={24} color={'#000100'}/> ),
@@ -72,13 +72,12 @@ const MyDrawer = (props) => {
                     title: 'Carrito'
                 }} />
                 
-                {
-                    !props.userLogged && <Drawer.Screen name='access' component={ AuthStack } options={{
-                        drawerIcon: () => ( <Ionicons name="key" size={24} color={'#000100'}/> ),
-                        title: 'Ingresar'
-                    }}/>
-                }
-                
+                <Drawer.Screen name='access' component={ AuthStack } options={{
+                    drawerIcon: () => ( <Ionicons name="key" size={24} color={'#000100'}/> ),
+                    title: 'Ingresar'
+                }}/>
+            
+                {/* <Ionicons name="exit" size={24} color="black" /> */}
             </Drawer.Navigator>
         </>
     )
@@ -91,7 +90,8 @@ return {
 }
 
 const mapDispatchToProps = {
-    logInForced: authActions.logInForced
+    logInForced: authActions.logInForced,
+    logOutUser: authActions.logOutUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyDrawer);
