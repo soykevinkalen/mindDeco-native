@@ -1,18 +1,19 @@
 import React from 'react'
-import { Text, View, StyleSheet, Dimensions, ScrollView, ImageBackground } from 'react-native'
+import { Text, View, StyleSheet, Dimensions, ScrollView, ImageBackground, TouchableOpacity } from 'react-native'
 
 const windowHeight = Dimensions.get('window').height;
 
-const CategoriaItem = ({subcategoria}) => {
+const CategoriaItem = ({subcategoria, navigation}) => {
     return (
-        <View style={styles.mainContainer}>
+        // le puse el TouchableOpacity porque el onPress() no anda en el View, aparte del opacity hay otros colores
+        <TouchableOpacity style={styles.mainContainer} onPress={()=> navigation.navigate('subcategorias', {subcategoria:subcategoria.subcategoria})}>
             <ImageBackground style={styles.imageContainer} source={{
                 uri: `${subcategoria.fotos[0]}`
             }}>
                 {/* <Text style={styles.textCategoria}>{subcategoria.subcategoria.replace(/\b\w/g, l => l.toUpperCase())}</Text> */}
                 <Text style={styles.textCategoria}>{subcategoria.subcategoria.charAt(0).toUpperCase()+ subcategoria.subcategoria.slice(1, subcategoria.subcategoria.legth)}</Text>
             </ImageBackground>
-        </View>
+        </TouchableOpacity>
     )
 }
 

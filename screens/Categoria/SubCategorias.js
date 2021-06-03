@@ -2,29 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { Dimensions, ScrollView, View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import BackConCarrito from '../utilities/BackConCarrito'
-import CategoriaItem from './CategoriaItem'
+import SubCategoriaItem from './SubCategoriaItem'
 
 import authActions from '../../redux/actions/authActions'
 
 const windowHeight = Dimensions.get('window').height;
 
-const Categoria = (props) => {
-    
-    // let subcategorias = props.productosCategoria.map(articulo => articulo.subcategoria)
-    // let subsNoRep = Array.from(new Set(subcategorias))
-    let hash = {};
-    let subsNoRep = props.productosCategoria.filter(o => hash[o.subcategoria] ? false : hash[o.subcategoria] = true);
-    // console.log(props)
+const SubCategorias = (props) => {
+    const subcategorias = props.productosCategoria.filter(producto => producto.subcategoria === props.route.params.subcategoria)
+    // console.log(subcategorias)
     return (
         <ScrollView style={styles.mainContainer}>
             <BackConCarrito navigateTo='home'/>
-            <View style={styles.categoriaItemContainer}>
-                {   
-                    subsNoRep.map((subcategoria, index) => {
-                        return <CategoriaItem navigation={props.navigation} key={index} subcategoria={subcategoria} />
-                    })
-                }
-            </View>
+            {
+                subcategorias.map(producto => <SubCategoriaItem key={producto._id} producto={producto} />)
+            }
         </ScrollView>
     )
 }
@@ -51,4 +43,4 @@ const mapDispatchToProps = {
     logOutUser: authActions.logOutUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Categoria);
+export default connect(mapStateToProps, mapDispatchToProps)(SubCategorias);
