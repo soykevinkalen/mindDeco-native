@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text } from 'react-native'
 import { connect } from 'react-redux'
-import BackConCarrito from '../utilities/BackConCarrito'
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
-// <AntDesign name="shoppingcart" size={24} color="black" />
-import authActions from '../../redux/actions/authActions'
 import carritoActions from '../../redux/actions/carritoActions'
 
 const windowHeight = Dimensions.get('window').height;
 
 const SubCategoriaItem = (props) => {
     const { nombre, precio } = props.producto
+    
     const agregandoProducto = async () => {
         const response = await props.agregarProductoAlCarrito(props.userLogged, props.producto)
         // PONELE TOSTADAS DE NATIVE

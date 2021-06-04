@@ -2,21 +2,30 @@ import React, { useEffect, useState } from 'react'
 import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text } from 'react-native'
 import { connect } from 'react-redux'
 import BackConCarrito from '../utilities/BackConCarrito'
-import { Ionicons } from '@expo/vector-icons';
 
-// <IoniCons name="magnifying-glass" size={24} color="black" />
-import authActions from '../../redux/actions/authActions'
+import carritoActions from '../../redux/actions/carritoActions'
+
 import ImagenesProductosSlider from './ImagenesProductosSlider';
 
 const windowHeight = Dimensions.get('window').height;
 
 const Producto = (props) => {
     const { nombre, precio, descripcion, fotos } = props.route.params.producto
-    
+
+    const agregandoProducto = async () => {
+        const response = await props.agregarProductoAlCarrito(props.userLogged, props.route.params.producto)
+        // PONELE TOSTADAS DE NATIVE
+        if(response.success) {
+           return alert('Se agrego al carrito')
+        }else{
+           return alert('Este producto ya esta en el carrito')
+        }
+    }
+
     return (
         <>
             <BackConCarrito navigateTo='subcategorias'/>
-            <View style={styles.mainContainer}>
+            <ScrollView style={styles.mainContainer}>
                 <ScrollView horizontal={true} style={styles.imagesContainer}>
                     {
                         fotos.map((productImage, index) => {
@@ -35,20 +44,21 @@ const Producto = (props) => {
                 
                         <View style={styles.bottomContainer}>
                             <Text style={styles.price}>${precio}</Text>
-                            <Text style={styles.btnAgregarCarrito}>Agregar al carrito</Text>
+                            <Text style={styles.btnAgregarCarrito} onPress={ ()=> agregandoProducto() }>Agregar al carrito</Text>
                         </View>
                     </View>
 
                 </View>
-            </View>
+            </ScrollView>
         </>
     )
 }
 
 const styles = StyleSheet.create({
     price: {
-        fontSize: 14,
-        fontWeight: 'bold'
+        fontSize: 16,
+        fontWeight: '500',
+        marginHorizontal: 16
     },
     btnAgregarCarrito: {
         backgroundColor: 'black',
@@ -59,7 +69,6 @@ const styles = StyleSheet.create({
     },
     subContainer: {
         justifyContent: 'space-between',
-        height: 135
     },
     titleContainer: {
         marginBottom: 10
@@ -76,7 +85,6 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     mainContainer: {
-        minHeight: windowHeight,
         width: '100%'
     },
     imagesContainer: {
@@ -92,7 +100,7 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     midContainer: {
-        height: 400,
+        minHeight: 200,
         padding: 12
     },
     title: {
@@ -101,7 +109,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         paddingHorizontal: 2
     }
@@ -109,13 +117,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        
+        productosCategoria: state.productosReducer.productosCategoria,
+        userLogged: state.authReducer.userLogged
     }
 }
 
 const mapDispatchToProps = {
-    
-
+    agregarProductoAlCarrito: carritoActions.agregarProductoAlCarrito
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Producto);
