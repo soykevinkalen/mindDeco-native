@@ -11,7 +11,7 @@ const CategoriaItem = ({subcategoria, navigation}) => {
                 uri: `${subcategoria.fotos[0]}`
             }}>
                 {/* <Text style={styles.textCategoria}>{subcategoria.subcategoria.replace(/\b\w/g, l => l.toUpperCase())}</Text> */}
-                <Text style={styles.textCategoria}>{subcategoria.subcategoria.charAt(0).toUpperCase()+ subcategoria.subcategoria.slice(1, subcategoria.subcategoria.legth)}</Text>
+                <Text style={styles.textCategoria}>{subcategoria.subcategoria.charAt(0).toUpperCase()+ subcategoria.subcategoria.slice(1, subcategoria.subcategoria.length)}</Text>
             </ImageBackground>
         </TouchableOpacity>
     )

@@ -13,14 +13,16 @@ const SubCategorias = (props) => {
     // console.log('SubCategorias.js ',subcategorias)
     
     return (
-        <ScrollView style={styles.mainContainer}>
-            <BackConCarrito navigateTo='home'/>
-            
-            {
-                subcategorias.map(producto => <SubCategoriaItem navigation={props.navigation} key={producto._id} producto={producto} />)
-            }
-            
-        </ScrollView>
+        <>
+            <BackConCarrito navigateTo='categoria'/>
+            <ScrollView style={styles.mainContainer}>
+                
+                {
+                    subcategorias.map(producto => <SubCategoriaItem navigation={props.navigation} key={producto._id} producto={producto} />)
+                }
+                
+            </ScrollView>
+        </>
     )
 }
 
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     mainContainer: {
-        minHeight: windowHeight,
         width: '100%'
     }
 })

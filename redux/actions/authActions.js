@@ -15,7 +15,7 @@ const authActions = {
                     payload: response.data.success ? response.data.respuesta : null
                 })
             }catch(error){
-                console.log('authActions ln 16',error)
+                console.log('authActions ln 16', error)
 
             }
         }

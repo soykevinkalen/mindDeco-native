@@ -17,7 +17,7 @@ const CarritoItem = (props) => {
                 <View style={styles.infoContainer}>
                     <View style={styles.upperContainer}>
                         <View style={styles.titleContainer}>
-                            <Text style={styles.title}>{nombre.charAt(0).toUpperCase()+ nombre.slice(1, nombre.legth)}</Text>
+                            <Text style={styles.title}>{nombre.charAt(0).toUpperCase()+ nombre.slice(1, nombre.length)}</Text>
                         </View>
                         <View style={styles.removeItemContainer}>
                             <Ionicons name="close-circle-sharp" size={22} color="black" onPress={ () =>  borrarProducto(props.producto) } />
