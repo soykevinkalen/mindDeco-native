@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, ImageBackground, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
 
 import NumericInput from 'react-native-numeric-input'
+import Toast from 'react-native-toast-message';
 
 import { Ionicons } from '@expo/vector-icons';
 
@@ -27,7 +28,11 @@ const CarritoItem = (props) => {
                         <NumericInput totalWidth={85} value={cantidad} textColor={cantidad === stock ? '#cecece' : '#000'} minValue={1} step={1} size={5} maxValue={stock} onChange={
                             (e) => {
                                 if(String(e) === String(stock)){
-                                    alert(`Llegaste al limite de unidades disponibles`)
+                                    Toast.show({
+                                        text1: 'Hey!',
+                                        text2: 'Llegaste al limite de unidades disponibles',
+                                        type: 'info'
+                                      });
                                 }
                                 modificaProducto(props.producto, e)
                             }

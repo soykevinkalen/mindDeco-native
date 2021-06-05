@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-toast-message';
 
 const initialState = {
     userLogged: null
@@ -9,7 +10,11 @@ const removeValue = async () => {
         await AsyncStorage.removeItem('userLogged')
         await AsyncStorage.removeItem('token')
     } catch {
-        alert('Internal database error, try in a moment')
+        Toast.show({
+            text1: 'Ops!',
+            text2: 'Error interno del servidor, intenta más tarde por favor',
+            type: 'error'
+        });
     }
 }
 
@@ -19,7 +24,11 @@ const storeData = async (value) => {
         await AsyncStorage.setItem('userLogged', jsonValue)
         await AsyncStorage.setItem('token', value.token)
     } catch {
-        alert('Internal database error, try in a moment')
+        Toast.show({
+            text1: 'Ops!',
+            text2: 'Error interno del servidor, intenta más tarde por favor',
+            type: 'error'
+        });
     }
 }
 

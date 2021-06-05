@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { Ionicons } from '@expo/vector-icons';
-import { SimpleLineIcons } from '@expo/vector-icons'; 
+import { SimpleLineIcons } from '@expo/vector-icons';
+
+import Toast from 'react-native-toast-message';
 
 import carritoActions from '../../redux/actions/carritoActions'
 
@@ -13,11 +15,19 @@ const SubCategoriaItem = (props) => {
     
     const agregandoProducto = async () => {
         const response = await props.agregarProductoAlCarrito(props.userLogged, props.producto)
-        // PONELE TOSTADAS DE NATIVE
         if(response.success) {
-           return alert('Se agrego al carrito')
-        }else{
-           return alert('Este producto ya esta en el carrito')
+            Toast.show({
+             text1: 'Genial!',
+             text2: 'El producto fue agregado al carrito',
+             type: 'success'
+           });
+            
+         } else {
+             Toast.show({
+                 text1: 'Ops!',
+                 text2: 'Este producto ya esta en el carrito',
+                 type: 'error'
+             });
         }
     }
     

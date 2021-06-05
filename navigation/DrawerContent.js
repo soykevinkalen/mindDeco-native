@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { connect } from "react-redux"
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import authActions from '../redux/actions/authActions'
+import Toast from 'react-native-toast-message';
 
 const DrawerContent = (props) =>{
     return(
@@ -38,7 +39,13 @@ const DrawerContent = (props) =>{
                     label="Cerrar sesion"
                     onPress={() => {
                         props.logOutUser()
-                        props.navigation.navigate('home')}}
+                        props.navigation.navigate('home')
+                        Toast.show({
+                            text1: 'Hasta luego!',
+                            text2: 'Esperamos que vuelvas pronto',
+                            type: 'success'
+                        });
+                    }}
                 />
                 </>:
                 <DrawerItem 

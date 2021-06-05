@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, TextInput, Dimensions, TouchableHighlight, Touc
 import { connect } from 'react-redux';
 import * as Google from "expo-google-app-auth";
 
+import Toast from 'react-native-toast-message';
+
 import Back from '../utilities/Back'
 
 import authActions from '../../redux/actions/authActions'
@@ -55,10 +57,18 @@ const SignIn = (props) => {
                     password: ''
                 })
             } else { 
-                alert(response)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         } else {
-            alert('Todos los campos son obligatorios')
+            Toast.show({
+                text1: 'Ops!',
+                text2: 'Todos los campos son obligatorios',
+                type: 'error'
+            });
         }
     }
     

@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 
+import Toast from 'react-native-toast-message'
+
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -26,6 +28,8 @@ function App() {
           />
           <NavigationContainer>
               <Drawer />
+              
+              <Toast ref={(ref) => Toast.setRef(ref)} />
           </NavigationContainer>
         </SafeAreaView>
       </Provider>

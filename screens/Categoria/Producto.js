@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text } from 'react-native'
+import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import BackConCarrito from '../utilities/BackConCarrito'
+import Toast from 'react-native-toast-message';
 
 import carritoActions from '../../redux/actions/carritoActions'
 
@@ -14,11 +15,19 @@ const Producto = (props) => {
 
     const agregandoProducto = async () => {
         const response = await props.agregarProductoAlCarrito(props.userLogged, props.route.params.producto)
-        // PONELE TOSTADAS DE NATIVE
         if(response.success) {
-           return alert('Se agrego al carrito')
+           Toast.show({
+            text1: 'Genial!',
+            text2: 'El producto fue agregado al carrito',
+            type: 'success'
+          });
+           
         }else{
-           return alert('Este producto ya esta en el carrito')
+            Toast.show({
+                text1: 'Ops!',
+                text2: 'Este producto ya esta en el carrito',
+                type: 'error'
+            });
         }
     }
 
@@ -44,7 +53,11 @@ const Producto = (props) => {
                 
                         <View style={styles.bottomContainer}>
                             <Text style={styles.price}>${precio}</Text>
-                            <Text style={styles.btnAgregarCarrito} onPress={ ()=> agregandoProducto() }>Agregar al carrito</Text>
+                            <TouchableOpacity onPress={ ()=> agregandoProducto() }>
+                                <Text style={styles.btnAgregarCarrito} >
+                                    Agregar al carrito
+                                </Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
 

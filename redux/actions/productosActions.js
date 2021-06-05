@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Toast from 'react-native-toast-message';
 
 const productosActions = {
     obtenerLosProductos: () => {
@@ -12,11 +13,19 @@ const productosActions = {
                         payload: respuesta.data.respuesta
                     })
                 } else {
-                    alert('Algo salio mal y seras redigirido a la pagina inicial')
+                    Toast.show({
+                        text1: 'Ops!',
+                        text2: 'Error interno del servidor, intenta más tarde por favor',
+                        type: 'error'
+                    });
                 }                
             } catch(error) {
                 console.log('Productos actions ln17', error)
-                // alert('Obtener productos Error interno del servidor, intente nuevamente en un momento')
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     },
@@ -32,11 +41,19 @@ const productosActions = {
                         payload: respuesta.data.respuesta
                     })
                 } else {
-                    alert('Algo salio mal y seras redigirido a la pagina inicial')
+                    Toast.show({
+                        text1: 'Ops!',
+                        text2: 'Error interno del servidor, intenta más tarde por favor',
+                        type: 'error'
+                    });
                 }    
             } catch (error) {
                 console.log('obtener producto por categoria', error)
-                // alert('Obtener por categoria Error interno del servidor, intente nuevamente en un momento')
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     },
@@ -52,11 +69,19 @@ const productosActions = {
                         payload: respuesta.data.respuesta
                     })
                 } else {
-                    alert('Algo salio mal y seras redigirido a la pagina inicial')
+                    Toast.show({
+                        text1: 'Ops!',
+                        text2: 'Error interno del servidor, intenta más tarde por favor',
+                        type: 'error'
+                    });
                 }    
             } catch (error) {
                 console.log(error)
-                alert('Error interno del servidor, intente nuevamente en un momento')
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     },
@@ -66,9 +91,19 @@ const productosActions = {
             try {
                 // const respuesta = await axios.post(`http://192.168.0.5:4000/api/productos`, nuevoProducto)
                 const respuesta = await axios.post(`http://192.168.100.10:4000/api/productos`, nuevoProducto)
+                Toast.show({
+                    text1: 'Genial!',
+                    text2: 'Producto cargado correctamente',
+                    type: 'success'
+                });
             }
             catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     }

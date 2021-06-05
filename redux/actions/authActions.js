@@ -1,4 +1,6 @@
 import axios from "axios";
+
+import Toast from 'react-native-toast-message';
  
 const authActions = {
     createUser: (user) => {
@@ -14,9 +16,18 @@ const authActions = {
                     type: 'LOG_USER',
                     payload: response.data.success ? response.data.respuesta : null
                 })
+                Toast.show({
+                    text1: 'Bienvenido!',
+                    text2: 'Ya formas parte de nuestra comunidad',
+                    type: 'success'
+                });
             }catch(error){
                 console.log('authActions ln 16', error)
-
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     },
@@ -34,8 +45,18 @@ const authActions = {
                     type:'LOG_USER',
                     payload: response.data.success ? response.data.respuesta : null
                 })
+                Toast.show({
+                    text1: 'Bienvenido de nuevo!',
+                    text2: 'Es bueno saber de ti nuevamente',
+                    type: 'success'
+                });
             }catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     },
@@ -43,8 +64,18 @@ const authActions = {
         return(dispatch, getState) => {
             try{
                 dispatch({type: 'LOGOUT_USER'})
+                Toast.show({
+                    text1: 'Hasta luego!',
+                    text2: 'Esperamos que vuelvas pronto',
+                    type: 'success'
+                });
             }catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     },
@@ -63,9 +94,19 @@ const authActions = {
                     ...respuesta.data.respuesta,
                     token: user.token
                 }})
+                
+                Toast.show({
+                    text1: 'Bienvenido de nuevo!',
+                    text2: 'Es bueno saber de ti nuevamente',
+                    type: 'success'
+                });
             } catch(error) {
                 console.log(error)
-                // toast.error('Ops... An error occurred, contact the administrator')  
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
             
         }
@@ -80,8 +121,18 @@ const authActions = {
                     type: 'LOG_USER',
                     payload: response.data.respuesta 
                 })
+                Toast.show({
+                    text1: 'Bienvenido!',
+                    text2: 'Disfruta de tus compras',
+                    type: 'success'
+                });
             }catch(error){
                 console.log('authActions.js',error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }
     }
