@@ -9,12 +9,8 @@ import authActions from '../../redux/actions/authActions'
 const windowHeight = Dimensions.get('window').height;
 
 const Categoria = (props) => {
-    
-    // let subcategorias = props.productosCategoria.map(articulo => articulo.subcategoria)
-    // let subsNoRep = Array.from(new Set(subcategorias))
     let hash = {};
     let subsNoRep = props.productosCategoria.filter(o => hash[o.subcategoria] ? false : hash[o.subcategoria] = true);
-    // console.log(props)
     return (
         <ScrollView style={styles.mainContainer}>
             <BackConCarrito navigateTo='home'/>

@@ -9,18 +9,20 @@ import authActions from '../../redux/actions/authActions'
 const windowHeight = Dimensions.get('window').height;
 
 const SubCategorias = (props) => {
-    const subcategorias = props.productosCategoria.filter(producto => producto.subcategoria === props.route.params.subcategoria)
-    // console.log('SubCategorias.js ',subcategorias)
+    let subcategorias = []
+    if(props.route.params.componente === 'grilla') {
+        subcategorias = props.route.params.productos
+    } else {
+        subcategorias = props.productosCategoria.filter(producto => producto.subcategoria === props.route.params.subcategoria)
+    }
     
     return (
         <>
-            <BackConCarrito navigateTo='categoria'/>
+            <BackConCarrito navigateTo={props.route.params.componente === 'grilla' ? 'home' : 'categoria'}/>
             <ScrollView style={styles.mainContainer}>
-                
                 {
                     subcategorias.map(producto => <SubCategoriaItem navigation={props.navigation} key={producto._id} producto={producto} />)
                 }
-                
             </ScrollView>
         </>
     )

@@ -9,6 +9,7 @@ import Categoria from '../screens/Categoria/Categoria'
 import Carrito from '../screens/Carrito/Carrito'
 import SubCategorias from '../screens/Categoria/SubCategorias'
 import Producto from '../screens/Categoria/Producto'
+
 const Stack = createStackNavigator()
 
 export const HomeStack = () => {

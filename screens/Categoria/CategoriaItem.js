@@ -6,7 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 const CategoriaItem = ({subcategoria, navigation}) => {
     return (
         // le puse el TouchableOpacity porque el onPress() no anda en el View, aparte del opacity hay otros colores
-        <TouchableOpacity style={styles.mainContainer} onPress={()=> navigation.navigate('subcategorias', {subcategoria:subcategoria.subcategoria})}>
+        <TouchableOpacity style={styles.mainContainer} onPress={()=> navigation.navigate('subcategorias', {subcategoria: subcategoria.subcategoria})}>
             <ImageBackground style={styles.imageContainer} source={{
                 uri: `${subcategoria.fotos[0]}`
             }}>
