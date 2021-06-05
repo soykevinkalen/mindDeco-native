@@ -22,7 +22,7 @@ const authActions = {
                     type: 'success'
                 });
             }catch(error){
-                console.log('authActions ln 16', error)
+                // console.log('authActions ln 16', error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -37,10 +37,10 @@ const authActions = {
                 // const response = await axios.post('http://192.168.0.5:4000/api/usuario/loguearse', user)
                 const response = await axios.post('http://192.168.100.10:4000/api/usuario/loguearse', user)
                 if(!response.data.success){
-                    console.log('authActions.js ln 27',response)
+                    // console.log('authActions.js ln 27',response)
                     return response.data.error
                 }
-                console.log('ln 29 authActions')
+                // console.log('ln 29 authActions')
                 dispatch({
                     type:'LOG_USER',
                     payload: response.data.success ? response.data.respuesta : null
@@ -51,7 +51,7 @@ const authActions = {
                     type: 'success'
                 });
             }catch(error){
-                console.log(error)
+                // console.log(error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -70,7 +70,7 @@ const authActions = {
                     type: 'success'
                 });
             }catch(error){
-                console.log(error)
+                // console.log(error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -101,7 +101,7 @@ const authActions = {
                     type: 'success'
                 });
             } catch(error) {
-                console.log(error)
+                // console.log(error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -116,7 +116,7 @@ const authActions = {
             try{
                 // const response = await axios.post("http://192.168.0.5:4000/api/usuario/botonGoogle", user)
                 const response = await axios.post("http://192.168.100.10:4000/api/usuario/botonGoogle", user)
-                console.log('authActions.js',response)
+                // console.log('authActions.js',response)
                 dispatch({
                     type: 'LOG_USER',
                     payload: response.data.respuesta 
@@ -127,7 +127,7 @@ const authActions = {
                     type: 'success'
                 });
             }catch(error){
-                console.log('authActions.js',error)
+                // console.log('authActions.js',error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',

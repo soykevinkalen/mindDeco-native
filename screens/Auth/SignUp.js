@@ -36,7 +36,7 @@ const SignUp = (props) => {
         axios.get('https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre')
         .then( response => {
             setProvincias(response.data.provincias)})
-        .catch(error => console.log(error))
+        // .catch(error => console.log(error))
     },[])
     const handleUserData = (field, value) => {
 		setNewUser({
@@ -57,7 +57,7 @@ const SignUp = (props) => {
                 await props.createUser({nombre: user.givenName, apellido: user.familyName, email: user.email, password: 'a'+user.id, provincia: 'google', google: true})
             }
         } catch (error) {
-            console.log("SignIn.js 52 | error ", error);
+            // console.log("SignIn.js 52 | error ", error);
             Toast.show({
                 text1: 'Ops!',
                 text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -69,7 +69,7 @@ const SignUp = (props) => {
     const sendData = async () => {
 		if(!Object.values(newUser).some(value => value === '')) {
 			const response = await props.createUser(newUser)
-            console.log('ln 77 signup', response)
+            // console.log('ln 77 signup', response)
 			let campos = {
 				nombre: '',
                 apellido: '',

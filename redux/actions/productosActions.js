@@ -20,7 +20,7 @@ const productosActions = {
                     });
                 }                
             } catch(error) {
-                console.log('Productos actions ln17', error)
+                // console.log('Productos actions ln17', error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -48,7 +48,7 @@ const productosActions = {
                     });
                 }    
             } catch (error) {
-                console.log('obtener producto por categoria', error)
+                // console.log('obtener producto por categoria', error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -76,7 +76,7 @@ const productosActions = {
                     });
                 }    
             } catch (error) {
-                console.log(error)
+                // console.log(error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
@@ -98,7 +98,7 @@ const productosActions = {
                 });
             }
             catch(error){
-                console.log(error)
+                // console.log(error)
                 Toast.show({
                     text1: 'Ops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',

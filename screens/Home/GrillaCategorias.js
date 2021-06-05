@@ -21,14 +21,14 @@ const GrillaCategorias = (props) => {
             <View style={styles.rowImageContainer}>
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('textil')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847145463417143341/850583500821233694/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847670056439119873/850772597352300544/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('vajillas')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847145463417143341/850585918812454933/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847670056439119873/850772016653926400/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>
@@ -43,7 +43,7 @@ const GrillaCategorias = (props) => {
 
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('muebles')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847145463417143341/850585732275372115/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847670056439119873/850772978001117254/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>

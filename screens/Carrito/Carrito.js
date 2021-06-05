@@ -14,7 +14,9 @@ const Carrito = (props) => {
 
     useEffect(() => {
         productos()
-    }, [carrito])
+    }, [props.userLogged])
+
+    console.log(carrito)
    
     const productos = async () => {
         if(props.userLogged){

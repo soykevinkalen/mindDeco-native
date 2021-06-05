@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, Image, Dimensions, TouchableHighlight, TouchableWithoutFeedback, ImageBackground } from 'react-native'
 import { connect } from 'react-redux';
 import * as Google from "expo-google-app-auth";
+import Toast from 'react-native-toast-message';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
@@ -15,7 +16,7 @@ const Access = (props) => {
     const navigation = useNavigation();
  
     const registerGoogle = async () => {
-        console.log('ln 18')
+        // console.log('ln 18')
         try {
             const { type, user } = await Google.logInAsync({
                 iosClientId: "687710738267-g3hisgph5mjb4pvdm0o8g863korgefk9.apps.googleusercontent.com",
@@ -26,7 +27,12 @@ const Access = (props) => {
                 await props.botonGoogle({nombre: user.givenName, apellido: user.familyName, email: user.email, password: 'a'+user.id, provincia: 'google', google: true})
             }
         } catch (error) {
-            console.log("SignIn.js 52 | error ", error);
+            // console.log("SignIn.js 52 | error ", error);
+            Toast.show({
+                text1: 'Ops!',
+                text2: 'Error interno del servidor, intenta más tarde por favor',
+                type: 'error'
+            });
         } 
     }
     return (

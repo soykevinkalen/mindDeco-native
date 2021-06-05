@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Toast from 'react-native-toast-message';
 
 const carritoActions = {
     agregarProductoAlCarrito: (user, producto) => {
@@ -17,6 +18,11 @@ const carritoActions = {
                 return response.data
             }catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }        
     },
@@ -36,6 +42,11 @@ const carritoActions = {
                 return response.data.respuesta                
             }catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }    
     },
@@ -51,6 +62,11 @@ const carritoActions = {
                 return response.data.respuesta
             }catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }        
     },
@@ -64,14 +80,24 @@ const carritoActions = {
                         'Authorization': 'Bearer '+user.token
                     }
                 })
-                console.log('ln: 13', response.data.respuesta )
+                
                 dispatch({
                     type: 'LOG_USER',
                     payload: response.data.success ? {...response.data.respuesta, token: user.token} : null
                 })
+                Toast.show({
+                    text1: 'Hey!',
+                    text2: 'Eliminaste el producto del carrito',
+                    type: 'info'
+                });
                 return response.data.respuesta
             }catch(error){
                 console.log(error)
+                Toast.show({
+                    text1: 'Ops!',
+                    text2: 'Error interno del servidor, intenta más tarde por favor',
+                    type: 'error'
+                });
             }
         }       
     }
