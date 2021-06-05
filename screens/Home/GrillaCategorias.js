@@ -21,7 +21,7 @@ const GrillaCategorias = (props) => {
             <View style={styles.rowImageContainer}>
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('textil')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847145463417143341/850574447122317392/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847145463417143341/850583500821233694/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>
