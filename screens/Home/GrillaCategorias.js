@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     titleContainer: {
         flexDirection: 'row',
         alignItems: 'baseline',
-        padding: 8
+        marginBottom: 6,
+        marginTop: 12
     },
     titleColor: {
         color: '#C9B687',
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     gridContainer: {
-        marginTop: 20
+        marginTop: 20,
+        marginBottom: 30
     },
     rowImageContainer: {
         flexDirection: 'row',
