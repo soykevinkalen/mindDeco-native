@@ -73,7 +73,6 @@ const carritoActions = {
     borrarProducto:(user, producto) => {
         return async (dispatch, getState) => {
             try{
-                console.log('user',user)
                 // const response = await axios.put('http://192.168.0.5:4000/api/borrarProducto',{producto},{
                 const response = await axios.put('http://192.168.100.10:4000/api/borrarProducto',{producto},{
                     headers: {
