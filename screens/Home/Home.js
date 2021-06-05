@@ -10,6 +10,7 @@ import productosActions from '../../redux/actions/productosActions'
 const Home = (props) => {
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         props.obtenerLosProductos()
     }, [])
     

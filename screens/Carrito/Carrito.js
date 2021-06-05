@@ -13,6 +13,7 @@ const Carrito = (props) => {
     let articulosTotales = 0
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         productos()
     }, [props.userLogged])
 

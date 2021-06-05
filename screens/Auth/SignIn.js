@@ -29,6 +29,10 @@ const SignIn = (props) => {
         })
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const registerGoogle = async () => {
 
         try {

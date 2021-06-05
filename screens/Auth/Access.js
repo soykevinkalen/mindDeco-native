@@ -14,6 +14,10 @@ const windowHeight = Dimensions.get('window').height;
 
 const Access = (props) => {
     const navigation = useNavigation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
  
     const registerGoogle = async () => {
         // console.log('ln 18')

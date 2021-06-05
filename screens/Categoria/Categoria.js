@@ -11,6 +11,10 @@ const windowHeight = Dimensions.get('window').height;
 const Categoria = (props) => {
     let hash = {};
     let subsNoRep = props.productosCategoria.filter(o => hash[o.subcategoria] ? false : hash[o.subcategoria] = true);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <ScrollView style={styles.mainContainer}>
             <BackConCarrito navigateTo='home'/>
