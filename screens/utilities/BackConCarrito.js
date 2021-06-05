@@ -7,17 +7,32 @@ import { Entypo } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
 import authActions from '../../redux/actions/authActions'
+import carritoActions from '../../redux/actions/carritoActions'
 
 import { useNavigation } from '@react-navigation/core';
 
 const BackConCarrito = (props) => {
     const navigation = useNavigation();
+
     const [modalOptions, setModalOptions] = useState(false)
+    const [unitsInCart, setUnitsInCart] = useState(0)
 
     const handleAccess = () => {
         navigation.navigate('access')
         setModalOptions(!modalOptions)
     }
+
+
+    useEffect(() => {
+        productos()
+    }, [props.userLogged])
+
+    const productos = async () => {
+        if(props.userLogged){
+            const array = await props.obtenerProductos(props.userLogged)
+            setUnitsInCart(array.carrito.length)
+        }
+    }  
     
     return (
         <View style={styles.navbar}>
@@ -29,7 +44,9 @@ const BackConCarrito = (props) => {
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
                     <SimpleLineIcons name="handbag" onPress={ () => navigation.navigate('carrito') } size={22} color="white" />
                     <View style={styles.itemsInCart}>
-                        <Entypo name="dot-single" size={10} color="red" />
+                        { 
+                            unitsInCart > 0 && <Entypo name="dot-single" size={10} color="red" />
+                        }
                     </View>
                 </View>
             </View>
@@ -112,7 +129,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    logOutUser: authActions.logOutUser
+    logOutUser: authActions.logOutUser,
+    obtenerProductos: carritoActions.obtenerProductos,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BackConCarrito);

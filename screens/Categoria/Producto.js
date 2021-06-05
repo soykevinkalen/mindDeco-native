@@ -24,7 +24,7 @@ const Producto = (props) => {
            
         }else{
             Toast.show({
-                text1: 'Ops!',
+                text1: 'Oops!',
                 text2: 'Este producto ya esta en el carrito',
                 type: 'error'
             });

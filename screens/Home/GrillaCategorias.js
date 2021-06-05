@@ -21,14 +21,14 @@ const GrillaCategorias = (props) => {
             <View style={styles.rowImageContainer}>
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('textil')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847670056439119873/850772597352300544/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847572005436129311/850804190082105354/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('vajillas')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847670056439119873/850772016653926400/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847572005436129311/850804155554856981/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>
@@ -36,14 +36,14 @@ const GrillaCategorias = (props) => {
             <View style={styles.rowImageContainer}>
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('decoración')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847145463417143341/850585833652486174/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847572005436129311/850804008142110790/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.imageContainer} onPress={() => handleSubcat('muebles')}>
                     <ImageBackground style={styles.imageContainer} source={{
-                        uri: 'https://cdn.discordapp.com/attachments/847670056439119873/850772978001117254/unknown.png'
+                        uri: 'https://cdn.discordapp.com/attachments/847572005436129311/850804631075291176/unknown.png'
                     }}>
                     </ImageBackground>
                 </TouchableOpacity>

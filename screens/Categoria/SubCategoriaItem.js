@@ -24,7 +24,7 @@ const SubCategoriaItem = (props) => {
             
          } else {
              Toast.show({
-                 text1: 'Ops!',
+                 text1: 'Oops!',
                  text2: 'Este producto ya esta en el carrito',
                  type: 'error'
              });
@@ -34,7 +34,7 @@ const SubCategoriaItem = (props) => {
     return (
         <View style={styles.mainContainer}>
             <ImageBackground style={styles.productImage} source={{
-                    uri: props.producto.fotos[0].includes('https') ? props.producto.fotos[0] : `/fotos/${props.producto.fotos[0]}`
+                    uri: props.producto.fotos[0]
                 }}>
             </ImageBackground>
             <View style={styles.infoContainer}>

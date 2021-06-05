@@ -11,7 +11,7 @@ const removeValue = async () => {
         await AsyncStorage.removeItem('token')
     } catch {
         Toast.show({
-            text1: 'Ops!',
+            text1: 'Oops!',
             text2: 'Error interno del servidor, intenta más tarde por favor',
             type: 'error'
         });
@@ -25,7 +25,7 @@ const storeData = async (value) => {
         await AsyncStorage.setItem('token', value.token)
     } catch {
         Toast.show({
-            text1: 'Ops!',
+            text1: 'Oops!',
             text2: 'Error interno del servidor, intenta más tarde por favor',
             type: 'error'
         });

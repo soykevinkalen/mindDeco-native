@@ -19,7 +19,7 @@ const carritoActions = {
             }catch(error){
                 console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -43,7 +43,7 @@ const carritoActions = {
             }catch(error){
                 console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -63,7 +63,7 @@ const carritoActions = {
             }catch(error){
                 console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -94,7 +94,7 @@ const carritoActions = {
             }catch(error){
                 console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });

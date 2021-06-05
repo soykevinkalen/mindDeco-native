@@ -14,7 +14,7 @@ const productosActions = {
                     })
                 } else {
                     Toast.show({
-                        text1: 'Ops!',
+                        text1: 'Oops!',
                         text2: 'Error interno del servidor, intenta más tarde por favor',
                         type: 'error'
                     });
@@ -22,7 +22,7 @@ const productosActions = {
             } catch(error) {
                 // console.log('Productos actions ln17', error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -42,7 +42,7 @@ const productosActions = {
                     })
                 } else {
                     Toast.show({
-                        text1: 'Ops!',
+                        text1: 'Oops!',
                         text2: 'Error interno del servidor, intenta más tarde por favor',
                         type: 'error'
                     });
@@ -50,7 +50,7 @@ const productosActions = {
             } catch (error) {
                 // console.log('obtener producto por categoria', error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -70,7 +70,7 @@ const productosActions = {
                     })
                 } else {
                     Toast.show({
-                        text1: 'Ops!',
+                        text1: 'Oops!',
                         text2: 'Error interno del servidor, intenta más tarde por favor',
                         type: 'error'
                     });
@@ -78,7 +78,7 @@ const productosActions = {
             } catch (error) {
                 // console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -100,7 +100,7 @@ const productosActions = {
             catch(error){
                 // console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });

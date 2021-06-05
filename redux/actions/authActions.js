@@ -24,7 +24,7 @@ const authActions = {
             }catch(error){
                 // console.log('authActions ln 16', error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -53,7 +53,7 @@ const authActions = {
             }catch(error){
                 // console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -72,7 +72,7 @@ const authActions = {
             }catch(error){
                 // console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -103,7 +103,7 @@ const authActions = {
             } catch(error) {
                 // console.log(error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });
@@ -129,7 +129,7 @@ const authActions = {
             }catch(error){
                 // console.log('authActions.js',error)
                 Toast.show({
-                    text1: 'Ops!',
+                    text1: 'Oops!',
                     text2: 'Error interno del servidor, intenta más tarde por favor',
                     type: 'error'
                 });

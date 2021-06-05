@@ -59,7 +59,7 @@ const SignUp = (props) => {
         } catch (error) {
             // console.log("SignIn.js 52 | error ", error);
             Toast.show({
-                text1: 'Ops!',
+                text1: 'Oops!',
                 text2: 'Error interno del servidor, intenta más tarde por favor',
                 type: 'error'
             });
@@ -86,7 +86,7 @@ const SignUp = (props) => {
 			
 		} else {
 			Toast.show({
-                text1: 'Ops!',
+                text1: 'Oops!',
                 text2: 'Todos los campos son obligatorios',
                 type: 'error'
             });

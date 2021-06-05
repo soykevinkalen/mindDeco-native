@@ -17,7 +17,7 @@ const MyDrawer = (props) => {
             return token
         } catch(e) {
             Toast.show({
-                text1: 'Ops!',
+                text1: 'Oops!',
                 text2: 'Error interno del servidor, intenta más tarde por favor',
                 type: 'error'
             });
@@ -31,7 +31,7 @@ const MyDrawer = (props) => {
             return JSON.parse(userStoraged)
         } catch (e) {
             Toast.show({
-                text1: 'Ops!',
+                text1: 'Oops!',
                 text2: 'Error interno del servidor, intenta más tarde por favor',
                 type: 'error'
             });
@@ -53,7 +53,7 @@ const MyDrawer = (props) => {
                 }
             } catch(e) {
                 Toast.show({
-                text1: 'Ops!',
+                text1: 'Oops!',
                 text2: 'Error interno del servidor, intenta más tarde por favor',
                 type: 'error'
             });

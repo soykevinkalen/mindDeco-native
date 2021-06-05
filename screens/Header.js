@@ -7,11 +7,10 @@ import { Entypo } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 
 import authActions from '../redux/actions/authActions'
-import productosActions from '../redux/actions/productosActions'
+import carritoActions from '../redux/actions/carritoActions'
 
 import { useNavigation } from '@react-navigation/core';
 
-import carritoActions from '../redux/actions/carritoActions'
 
 const Header = (props) => {
     const navigation = useNavigation();
@@ -20,6 +19,20 @@ const Header = (props) => {
         navigation.navigate('access')
         setModalOptions(!modalOptions)
     }
+
+    const [unitsInCart, setUnitsInCart] = useState(0)
+
+    useEffect(() => {
+        productos()
+    }, [props.userLogged])
+
+    const productos = async () => {
+        if(props.userLogged){
+            const array = await props.obtenerProductos(props.userLogged)
+            setUnitsInCart(array.carrito.length)
+        }
+    }
+    
     return (
         <View style={styles.navbar}>
             <View style={styles.innerNavbar}>
@@ -29,9 +42,10 @@ const Header = (props) => {
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>
                     <SimpleLineIcons name="handbag" onPress={ () => navigation.navigate('carrito') } size={22} color="white" />
-
                     <View style={styles.itemsInCart}>
-                        <Entypo name="dot-single" size={10} color="red" />
+                        { 
+                            unitsInCart > 0 && <Entypo name="dot-single" size={10} color="red" />
+                        }
                     </View>
                 </View>
             </View>
@@ -109,13 +123,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
     return {
-        userLogged: state.authReducer.userLogged,
-        obtenerProductos: carritoActions.obtenerProductos,
+        userLogged: state.authReducer.userLogged
     }
 }
 
 const mapDispatchToProps = {
-    logOutUser: authActions.logOutUser
+    logOutUser: authActions.logOutUser,
+    obtenerProductos: carritoActions.obtenerProductos,
 }
 
 

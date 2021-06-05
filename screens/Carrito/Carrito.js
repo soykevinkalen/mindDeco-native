@@ -16,11 +16,10 @@ const Carrito = (props) => {
         productos()
     }, [props.userLogged])
 
-    console.log(carrito)
-   
     const productos = async () => {
         if(props.userLogged){
             const array = await props.obtenerProductos(props.userLogged)
+            console.log(array.carrito.length)
             setCarrito(array.carrito)
         }
     }
