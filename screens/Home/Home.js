@@ -10,7 +10,7 @@ import productosActions from '../../redux/actions/productosActions'
 const Home = (props) => {
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0) Comenté esto porque me tiraba que no era una function, verlo dsps
         props.obtenerLosProductos()
     }, [])
     

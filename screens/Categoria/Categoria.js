@@ -13,7 +13,7 @@ const Categoria = (props) => {
     let subsNoRep = props.productosCategoria.filter(o => hash[o.subcategoria] ? false : hash[o.subcategoria] = true);
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0) comente eso
     }, [])
     return (
         <ScrollView style={styles.mainContainer}>

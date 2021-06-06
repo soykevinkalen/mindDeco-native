@@ -9,6 +9,10 @@ import Categoria from '../screens/Categoria/Categoria'
 import Carrito from '../screens/Carrito/Carrito'
 import SubCategorias from '../screens/Categoria/SubCategorias'
 import Producto from '../screens/Categoria/Producto'
+import SeccionDirecciones from '../screens/PasarelaDePago/SeccionDirecciones'
+import MetodoDeEnvio from '../screens/PasarelaDePago/MetodoDeEnvio'
+import MetodoDePago from '../screens/PasarelaDePago/MetodoDePago'
+import ConfirmarCompra from '../screens/PasarelaDePago/ConfirmarCompra'
 
 const Stack = createStackNavigator()
 
@@ -31,6 +35,11 @@ export const CarritoStack = () => {
             <Stack.Screen name='carrito' component={Carrito} options={{
                 title: 'Ir a carrito'
             }} />
+            <Stack.Screen name='seccionDirecciones' component={SeccionDirecciones} />
+            <Stack.Screen name='metodoDeEnvio' component={MetodoDeEnvio} />
+            <Stack.Screen name='metodoDePago' component={MetodoDePago} />
+            <Stack.Screen name='confirmarCompra' component={ConfirmarCompra} />
+            <Stack.Screen name='home' component={Home}/>
         </Stack.Navigator>
     )
 }
@@ -43,6 +52,17 @@ export const AuthStack = () => {
             }}/>
             <Stack.Screen name='signin' component={SignIn} />
             <Stack.Screen name='signup' component={SignUp} />
+        </Stack.Navigator>
+    )
+}
+
+export const PasarelaStack = () => {
+    return(
+        <Stack.Navigator  >
+            <Stack.Screen name='seccionDirecciones' component={SeccionDirecciones}  />
+            <Stack.Screen name='metodoDeEnvio' component={MetodoDeEnvio} />
+            <Stack.Screen name='metodoDePago' component={MetodoDePago} />
+            <Stack.Screen name='confirmarCompra' component={ConfirmarCompra} />
         </Stack.Navigator>
     )
 }

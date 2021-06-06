@@ -6,7 +6,7 @@ const productosActions = {
         return async(dispatch, getState) => {
             try {
                 // const respuesta = await axios.get('http://192.168.0.5:4000/api/productos')
-                const respuesta = await axios.get('http://192.168.100.10:4000/api/productos')
+                const respuesta = await axios.get('http://192.168.0.89:4000/api/productos')
                 if(respuesta.data.success) {
                     dispatch({
                         type: 'OBTENER_PRODUCTOS',
@@ -34,7 +34,7 @@ const productosActions = {
         return async(dispatch, getState) => {
             try {
                 // const respuesta = await axios.get(`http://192.168.0.5:4000/api/productos/${categoria}`)
-                const respuesta = await axios.get(`http://192.168.100.10:4000/api/productos/${categoria}`)
+                const respuesta = await axios.get(`http://192.168.0.89:4000/api/productos/${categoria}`)
                 if(respuesta.data.success) {
                     dispatch({
                         type: 'PRODUCTOS_CATEGORIA',
@@ -62,7 +62,7 @@ const productosActions = {
         return async (dispatch, getState) => {
             try {
                 // const respuesta = await axios.get(`http://192.168.0.5:4000/api/productosSubcategoria/${subcategoria}`)
-                const respuesta = await axios.get(`http://192.168.100.10:4000/api/productosSubcategoria/${subcategoria}`)
+                const respuesta = await axios.get(`http://192.168.0.89:4000/api/productosSubcategoria/${subcategoria}`)
                 if(respuesta.data.success) {
                     dispatch({
                         type: 'PRODUCTOS_SUBCATEGORIA',
@@ -90,7 +90,7 @@ const productosActions = {
         return async (dispatch, getState) => {
             try {
                 // const respuesta = await axios.post(`http://192.168.0.5:4000/api/productos`, nuevoProducto)
-                const respuesta = await axios.post(`http://192.168.100.10:4000/api/productos`, nuevoProducto)
+                const respuesta = await axios.post(`http://192.168.0.89:4000/api/productos`, nuevoProducto)
                 Toast.show({
                     text1: 'Genial!',
                     text2: 'Producto cargado correctamente',

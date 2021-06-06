@@ -33,7 +33,7 @@ const SignUp = (props) => {
 		password: ''
 	});
     useEffect(()=>{
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0) Comente esto, despues verlo
         
         axios.get('https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre')
         .then( response => {

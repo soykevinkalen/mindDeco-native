@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, View, StyleSheet, Text } from 'react-native'
+import { ScrollView, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
 import { connect } from 'react-redux'
 import Header from '../Header'
 
 import carritoActions from '../../redux/actions/carritoActions'
 import CarritoItem from './CarritoItem'
+import { useNavigation } from '@react-navigation/core';
 
 const Carrito = (props) => {
     const [carrito, setCarrito] = useState([])
+    const navigation = useNavigation();
 
     let precioTotal = 0
     let articulosTotales = 0
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0) Comente esto, despues verlo
         productos()
     }, [props.userLogged])
 
@@ -51,7 +53,10 @@ const Carrito = (props) => {
             </ScrollView>
             <View style={styles.fixedNav}>
                 <Text style={styles.textTotal}>Total: ${precioTotal} ({articulosTotales} prod.)</Text>
-                <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
+                
+                <TouchableWithoutFeedback onPress={ () => navigation.navigate('seccionDirecciones')}>
+                    <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
+                </TouchableWithoutFeedback>
             </View>
         </>
     )

@@ -7,7 +7,7 @@ const authActions = {
         return async (dispatch, getState) => {
             try{
                 // const response = await axios.post('http://192.168.0.5:4000/api/usuario/registrarse', user)
-                const response = await axios.post('http://192.168.100.10:4000/api/usuario/registrarse', user)
+                const response = await axios.post('http://192.168.0.89:4000/api/usuario/registrarse', user)
                 if(!response.data.success){
                     return response.data.errores
                 }
@@ -35,7 +35,7 @@ const authActions = {
         return async(dispatch, getState) => {
             try{
                 // const response = await axios.post('http://192.168.0.5:4000/api/usuario/loguearse', user)
-                const response = await axios.post('http://192.168.100.10:4000/api/usuario/loguearse', user)
+                const response = await axios.post('http://192.168.0.89:4000/api/usuario/loguearse', user)
                 if(!response.data.success){
                     // console.log('authActions.js ln 27',response)
                     return response.data.error
@@ -84,7 +84,7 @@ const authActions = {
         return async (dispatch, getState) => {
             try {
                 // const respuesta = await axios.get('http://192.168.0.5:4000/api/usuario/loginforzado', {
-                const respuesta = await axios.get('http://192.168.100.10:4000/api/usuario/loginforzado', {
+                const respuesta = await axios.get('http://192.168.0.89:4000/api/usuario/loginforzado', {
                     headers: {
                         'Authorization': 'Bearer '+user.token
                     }
@@ -115,7 +115,7 @@ const authActions = {
         return async (dispatch, getState) => {
             try{
                 // const response = await axios.post("http://192.168.0.5:4000/api/usuario/botonGoogle", user)
-                const response = await axios.post("http://192.168.100.10:4000/api/usuario/botonGoogle", user)
+                const response = await axios.post("http://192.168.0.89:4000/api/usuario/botonGoogle", user)
                 // console.log('authActions.js',response)
                 dispatch({
                     type: 'LOG_USER',

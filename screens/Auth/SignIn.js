@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, TextInput, Dimensions, TouchableHighlight, TouchableWithoutFeedback, ImageBackground } from 'react-native'
 import { connect } from 'react-redux';
 import * as Google from "expo-google-app-auth";
@@ -30,7 +30,7 @@ const SignIn = (props) => {
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0) Comente esto, despues ver
     }, [])
 
     const registerGoogle = async () => {
@@ -52,8 +52,6 @@ const SignIn = (props) => {
                 type: 'error'
             });
         }
-    
-        
     }
 
     const sendData = async () => {
