@@ -32,9 +32,7 @@ const SignUp = (props) => {
 		email: '',
 		password: ''
 	});
-    useEffect(()=>{
-        window.scrollTo(0, 0)
-        
+    useEffect(()=>{   
         axios.get('https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre')
         .then( response => {
             setProvincias(response.data.provincias)})
