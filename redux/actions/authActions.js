@@ -11,7 +11,7 @@ const authActions = {
                 if(!response.data.success){
                     return response.data.errores
                 }
-                
+
                 dispatch({
                     type: 'LOG_USER',
                     payload: response.data.success ? response.data.respuesta : null

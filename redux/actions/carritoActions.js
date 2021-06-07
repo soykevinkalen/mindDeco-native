@@ -99,7 +99,26 @@ const carritoActions = {
                 });
             }
         }       
-    }
+    },
+    vaciarCarrito:(user,producto) => {
+        return async (dispatch, getState) => {
+            try{
+                const response = await axios.put('http://192.168.0.89:4000/api/vaciarCarrito',{producto},{
+                    headers: {
+                        'Authorization': 'Bearer '+user.token
+                    }
+                })
+                // console.log('ln: 13', response.data.respuesta )
+                dispatch({
+                    type: 'LOG_USER',
+                    payload: response.data.success ? {...response.data.respuesta, token: user.token} : null
+                })
+                return response.data.respuesta
+            }catch(error){
+                console.log(error)
+            }
+        }       
+    },
 }
 
 export default carritoActions

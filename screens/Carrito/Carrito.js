@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ScrollView, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
 import { connect } from 'react-redux'
 import Header from '../Header'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import carritoActions from '../../redux/actions/carritoActions'
 import CarritoItem from './CarritoItem'
 import { useNavigation } from '@react-navigation/core';
@@ -23,6 +23,7 @@ const Carrito = (props) => {
         if(props.userLogged){
             const array = await props.obtenerProductos(props.userLogged)
             setCarrito(array.carrito)
+            await AsyncStorage.setItem("carrito", JSON.stringify(array.carrito))
         }
     }
     
