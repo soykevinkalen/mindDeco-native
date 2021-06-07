@@ -7,19 +7,19 @@ import Toast from 'react-native-toast-message'
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-
 import {NavigationContainer} from '@react-navigation/native';
 import Drawer from './navigation/Drawer';
-
 import mainReducer from './redux/reducer/mainReducer';
+import { LogBox } from 'react-native';
 
 const myStore = createStore(mainReducer, applyMiddleware(thunk))
 
-function App() {
 
+
+function App() {
+  LogBox.ignoreAllLogs();
   return (
     <> 
-
       <Provider store={myStore}>
          <SafeAreaView style={styles.container} barStyle={"dark-content"}>
           <StatusBar

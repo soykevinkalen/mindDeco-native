@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, View, StyleSheet, Text } from 'react-native'
+import { ScrollView, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
 import { connect } from 'react-redux'
 import Header from '../Header'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import carritoActions from '../../redux/actions/carritoActions'
 import CarritoItem from './CarritoItem'
+import { useNavigation } from '@react-navigation/core';
 
 const Carrito = (props) => {
     const [carrito, setCarrito] = useState([])
+    const navigation = useNavigation();
 
     let precioTotal = 0
     let articulosTotales = 0
@@ -20,6 +22,7 @@ const Carrito = (props) => {
         if(props.userLogged){
             const array = await props.obtenerProductos(props.userLogged)
             setCarrito(array.carrito)
+            await AsyncStorage.setItem("carrito", JSON.stringify(array.carrito))
         }
     }
     
@@ -50,7 +53,10 @@ const Carrito = (props) => {
             </ScrollView>
             <View style={styles.fixedNav}>
                 <Text style={styles.textTotal}>Total: ${precioTotal} ({articulosTotales} prod.)</Text>
-                <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
+                
+                <TouchableWithoutFeedback onPress={ () => navigation.navigate('seccionDirecciones')}>
+                    <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
+                </TouchableWithoutFeedback>
             </View>
         </>
     )

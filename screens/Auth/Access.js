@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Image, Dimensions, TouchableHighlight, TouchableWithoutFeedback, ImageBackground } from 'react-native'
 import { connect } from 'react-redux';
 import * as Google from "expo-google-app-auth";

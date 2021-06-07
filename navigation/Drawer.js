@@ -91,8 +91,6 @@ const MyDrawer = (props) => {
                         title: 'Ingresar'
                     }}/>
                 }
-                
-                
     
             </Drawer.Navigator>
         </>
