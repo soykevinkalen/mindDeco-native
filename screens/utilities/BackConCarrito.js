@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native';
+import { View, StyleSheet, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -38,7 +38,9 @@ const BackConCarrito = (props) => {
         <View style={styles.navbar}>
             <View style={styles.innerNavbar}>
                 <View style={styles.menuHambContainer}>
-                    <Ionicons name="chevron-back" size={32} color='white' onPress={ () => navigation.navigate(props.navigateTo)} />
+                    <TouchableOpacity onPress={ () => navigation.navigate(props.navigateTo)} >
+                        <Ionicons name="chevron-back" size={32} color='white'/>
+                    </TouchableOpacity>
                     <Text style={styles.textMenuHamb}>{props.userLogged && `Hola ${props.userLogged.nombre}!`}</Text>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'center', marginRight: 8, position: 'relative'}}>

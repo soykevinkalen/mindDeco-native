@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, ScrollView, Alert, Text, KeyboardAvoidingView, Platform, SafeAreaView, TouchableWithoutFeedback, View, Image, StatusBar } from 'react-native'
+import { StyleSheet, ScrollView, Alert, Text, KeyboardAvoidingView, Platform, SafeAreaView, TouchableWithoutFeedback, View, Image, StatusBar, TouchableOpacity } from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextField, FilledTextField, OutlinedTextField,  } from 'rn-material-ui-textfield'
 
 // import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
 import {CreditCardInput,} from 'react-native-credit-card-input';
+import Back from '../utilities/Back';
 
 const CreditCard = () => {
     const navigation = useNavigation()
@@ -21,15 +22,15 @@ const CreditCard = () => {
       };
       return (
         <View>
-            <View></View>
+            <Back navigateTo='metodoDePago' color='white' title='Datos de tu tarjeta' />
             <View style={styles.contenedorTarjeta}>
-                <CreditCardInput labelStyle={{color: 'white'}} inputStyle={{borderBottomColor: 'green'}} validColor="black" invalidColor="red" onChange={_onChange} />
+                <CreditCardInput labelStyle={{color: 'black'}} inputStyle={{borderBottomColor: 'green'}} validColor="black" invalidColor="red" onChange={_onChange} />
             </View>
-            <View style={styles.contenedorBotonContinuar}>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate('confirmarCompra')}>
-                    <Text style={styles.botonContinuar}>Continuar</Text>
-                </TouchableWithoutFeedback>
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('confirmarCompra')}>
+              <View style={styles.contenedorBotonContinuar}>
+                      <Text style={styles.botonContinuar}>Continuar</Text>
+              </View>
+            </TouchableOpacity>
         </View>
       );
 }
@@ -48,8 +49,6 @@ const styles = StyleSheet.create({
       marginTop: 0,
     },
     contenedorTarjeta: {
-        backgroundColor: 'white',
-        // backgroundColor: 'black',
         paddingTop: 30
     },
     contenedorBotonContinuar: {
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
     },
     botonContinuar: {
         borderRadius: 5,
+        overflow: 'hidden',
         color: 'white',
         width: '80%',
         fontSize: 20,

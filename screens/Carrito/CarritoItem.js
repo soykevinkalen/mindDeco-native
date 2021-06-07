@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, ImageBackground, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableWithoutFeedback, TextInput, Button, TouchableOpacity } from 'react-native';
 
 import NumericInput from 'react-native-numeric-input'
 import Toast from 'react-native-toast-message';
@@ -20,9 +20,11 @@ const CarritoItem = (props) => {
                         <View style={styles.titleContainer}>
                             <Text style={styles.title}>{nombre.charAt(0).toUpperCase()+ nombre.slice(1, nombre.length)}</Text>
                         </View>
-                        <View style={styles.removeItemContainer}>
-                            <Ionicons name="close-circle-sharp" size={22} color="black" onPress={ () =>  borrarProducto(props.producto) } />
-                        </View>
+                        <TouchableOpacity onPress={ () =>  borrarProducto(props.producto) } >
+                            <View style={styles.removeItemContainer}>
+                                <Ionicons name="close-circle-sharp" size={22} color="black" />
+                            </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.bottomContainer}>
                         <NumericInput totalWidth={85} value={cantidad} textColor={cantidad === stock ? '#cecece' : '#000'} minValue={1} step={1} size={5} maxValue={stock} onChange={

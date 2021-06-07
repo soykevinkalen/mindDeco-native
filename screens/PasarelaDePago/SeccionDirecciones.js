@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ScrollView, StyleSheet, Text, TextInput, Modal, Pressable, TouchableWithoutFeedback, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TextInput, Modal, Pressable, View, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/core';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextField, FilledTextField, OutlinedTextField,  } from 'rn-material-ui-textfield'
@@ -7,6 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios'
 import {Picker} from '@react-native-picker/picker';
 import Toast from 'react-native-toast-message';
+
+import Back from '../utilities/Back'
 
 const SeccionDirecciones = ()=>{
     const navigation = useNavigation();
@@ -36,17 +38,6 @@ const SeccionDirecciones = ()=>{
                 type: 'error'
             });
         }
-
-        // infoDelUsuario.nombreYApellido === '' ? setinputEstaVacio({...inputEstaVacio, nombreYApellido: true}) 
-        // : setinputEstaVacio({...inputEstaVacio, nombreYApellido: false}) 
-        // infoDelUsuario.direccion === '' ? setinputEstaVacio({...inputEstaVacio, direccion: true}) 
-        // : setinputEstaVacio({...inputEstaVacio, direccion: false}) 
-        // infoDelUsuario.localidad === '' ? setinputEstaVacio({...inputEstaVacio, localidad: true}) 
-        // : setinputEstaVacio({...inputEstaVacio, localidad: false}) 
-        // infoDelUsuario.codigoPostal === '' ? setinputEstaVacio({...inputEstaVacio, codigoPostal: true}) 
-        // : setinputEstaVacio({...inputEstaVacio, codigoPostal: false}) 
-        // infoDelUsuario.telefono === '' ? setinputEstaVacio({...inputEstaVacio, telefono: true}) 
-        // : setinputEstaVacio({...inputEstaVacio, telefono: false})
     }
 
     const pickerRef = useRef();
@@ -60,14 +51,11 @@ const SeccionDirecciones = ()=>{
     }
 
     return (
-        <ScrollView style={styles.contenedorDirecciones}>
-            <View style={styles.contenedorTituloDirecciones}>
-                <Text style={styles.tituloDirecciones}>Agregá un Domicilio</Text>
-            </View>
+        <ScrollView style={styles.contenedorDirecciones}>        
+        
+            <Back navigateTo='carrito' color='white' bgColor='black' title='Datos del envío' />
 
             <View style={styles.contenedorInputDirecciones}>
-                {/* <TextInput placeholder="Nombre y Apellido" onChangeText={(e)=>leerInput('nombreYApellido', e)} ></TextInput> */}
-
                 <TextField
                     style={styles.direccionesInput}
                     lineWidth={1}
@@ -75,7 +63,6 @@ const SeccionDirecciones = ()=>{
                     label="Nombre y Apellido"
                     baseColor="rgb(0,0,0)"
                     onChangeText={(e)=>leerInput('nombreYApellido', e)}
-                    // error={inputEstaVacio.nombreYApellido ? "Complete este campo" : "" }
                 />
             </View>
 
@@ -87,7 +74,6 @@ const SeccionDirecciones = ()=>{
                     label="Dirección"
                     baseColor="rgb(0,0,0)"
                     onChangeText={(e)=>leerInput('direccion', e)}
-                    // error={inputEstaVacio.direccion && "Complete este campo" }
                 />
             </View>
 
@@ -99,7 +85,6 @@ const SeccionDirecciones = ()=>{
                     label="Localidad"
                     baseColor="rgb(0,0,0)"
                     onChangeText={(e)=>leerInput('localidad', e)}
-                    // error={inputEstaVacio.localidad && "Complete este campo" }
                 />
             </View>
 
@@ -111,7 +96,6 @@ const SeccionDirecciones = ()=>{
                     label="Código Postal"
                     baseColor="rgb(0,0,0)"
                     onChangeText={(e)=>leerInput('codigoPostal', e)}
-                    // error={inputEstaVacio.codigoPostal && "Complete este campo" }
                 />
             </View>
 
@@ -124,7 +108,6 @@ const SeccionDirecciones = ()=>{
                     baseColor="rgb(0,0,0)"
                     keyboardType="phone-pad"
                     onChangeText={(e)=>leerInput('telefono', e)}
-                    // error={inputEstaVacio.telefono && "Complete este campo" }
                 />
             </View>
 
@@ -185,11 +168,11 @@ const SeccionDirecciones = ()=>{
                 <TextInput onChangeText={(e)=>leerInput('infoExtra', e)} placeholder="Color de la casa, entre calles...." style={styles.indicacionesAdicionales}></TextInput>
             </View>
 
-            <View style={styles.contenedorBotonContinuar}>
-                <TouchableWithoutFeedback onPress={() => continuar()}>
-                    <Text style={styles.botonContinuar}>Continuar</Text>
-                </TouchableWithoutFeedback>
-            </View>
+                <TouchableOpacity onPress={() => continuar()}>
+                    <View style={styles.contenedorBotonContinuar}>
+                            <Text style={styles.botonContinuar}>Continuar</Text>
+                    </View>
+                </TouchableOpacity>
 
         </ScrollView>
         )
@@ -241,7 +224,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'rgb(52,131,250)'
         // backgroundColor: 'rgb(201,182,135)',
         backgroundColor: 'black',
-        color: 'white'
+        color: 'white',
+        overflow: 'hidden'
     },
     contenedorInputDirecciones: {
         width: '80%',
@@ -331,7 +315,8 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     btnCountryText: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
 })
 

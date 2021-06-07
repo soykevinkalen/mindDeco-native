@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, TouchableHighlight, TouchableHighlightCom
 import { useNavigation } from '@react-navigation/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Entypo } from '@expo/vector-icons'; 
+import Back from '../utilities/Back';
 
 const PagoEnEfectivo = () => {
     const navigation = useNavigation()
@@ -17,9 +18,9 @@ const PagoEnEfectivo = () => {
 
     return (
         <ScrollView style={styles.contenedorGeneral}>
-            <View style={styles.contenedorTituloDeSeccion}>
-                <Text style={styles.titulo}>¿Donde te gustaria pagar?</Text>
-            </View>
+            
+            <Back navigateTo='metodoDePago' color='white' bgColor='black' title='¿Dónde te gustaría pagar?' />
+
             <View style={styles.contenedorOpcionesDePago}>
                 <TouchableHighlight onPress={()=> elegirMetodoDePagoEnEfectivo('pagoFacil')} style={styles.contenedorOpcionDePago} underlayColor='#858585'>
                     <View style={styles.opcionDePago1}>

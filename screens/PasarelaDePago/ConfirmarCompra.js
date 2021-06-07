@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,10 +10,10 @@ import { connect } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import Toast from 'react-native-toast-message';
 
+import Back from '../utilities/Back';
+
 const ConfirmarCompra = (props) => {
     const navigation = useNavigation()
-    // const [totalDeProductos, setTotalDeProductos] = useState(0)
-    // const [precioTotal, setPrecioTotal] = useState(0)
     const [infoDelUsuario, setInfoDelUsuario] = useState({})
     const [carrito, setCarrito] = useState([])
 
@@ -84,67 +84,69 @@ const ConfirmarCompra = (props) => {
     }
 
     return (
-        <ScrollView style={styles.contenedorDeSeccion}>
-            <View style={styles.contenedorTituloPrincipal}>
-                <Text style={styles.tituloPrincipal}>Confirma tu Compra</Text>
-                <View style={styles.seccionInfoDeLaCompra}>
-                    <View style={styles.contenedorTextoDelTitulo}>
-                        <Text style={styles.textoSeccionPrincipal}>Productos ({articulosTotales})</Text>
-                        <Text style={styles.textoSeccionPrincipal}>$ {precioTotal}</Text>
-                    </View>
-                    <View style={styles.contenedorTextoDelTitulo}>
-                        <Text style={styles.textoSeccionPrincipal}>Envío</Text>
-                        <Text style={styles.textoSeccionPrincipal}>Gratis</Text>
-                    </View>
-                    <View style={styles.barraDivisora}></View>
-                    <View style={styles.contenedorTextoDelTitulo}>
-                        <Text style={styles.textoSeccionPrincipal}>Total</Text>
-                        <Text style={styles.textoSeccionPrincipal}>$ {precioTotal}</Text>
-                    </View>
-                    <TouchableHighlight style={styles.contenedorBotonConfirmar} underlayColor='black' onPress={() => confirmarCompra()}>
-                        <View style={styles.BotonConfirmar} >
-                            <Text style={styles.textoBotonConfirmar}>Confirmar Compra</Text>
+        <>
+            <Back navigateTo='metodoDePago' color='white' bgColor='black' title='Finalizar compra' />
+            <ScrollView style={styles.contenedorDeSeccion}>
+                <View style={styles.contenedorTituloPrincipal}>
+                    <Text style={styles.tituloPrincipal}>Confirma tu Compra</Text>
+                    <View style={styles.seccionInfoDeLaCompra}>
+                        <View style={styles.contenedorTextoDelTitulo}>
+                            <Text style={styles.textoSeccionPrincipal}>Productos ({articulosTotales})</Text>
+                            <Text style={styles.textoSeccionPrincipal}>$ {precioTotal}</Text>
                         </View>
-                    </TouchableHighlight>
-                </View>
-            </View>
-
-            <View style={styles.contenedorInfoDeEntrega}>
-                <View style={styles.iconoEntrega}>
-                    <MaterialCommunityIcons name="truck-fast-outline" size={30} color="rgb(61, 137, 250)" />
-                </View>
-                {/* <Icon icon={truckIcon} /> */}
-                <Text style={styles.textoDireccionDeEntrega}>{infoDelUsuario.direccion}</Text>
-                <Text style={styles.textoInfoDeEntrega}>{infoDelUsuario.localidad}, {infoDelUsuario.provincia}</Text>
-                <Text style={styles.textoInfoDeEntrega}>{infoDelUsuario.nombreYApellido} - {infoDelUsuario.telefono}</Text>
-                <View style={styles.contenedorBotonesEditar}>
-                    <TouchableHighlight style={styles.contenedorBotonEditar} onPress={() => navigation.navigate('metodoDeEnvio')} underlayColor="rgb(215, 215, 215)">
-                        <Text style={styles.textoBotonEditar}>Editar forma de Envio</Text>
-                    </TouchableHighlight>
-
-                    <TouchableHighlight style={styles.contenedorBotonEditar} onPress={() => navigation.navigate('metodoDePago')} underlayColor="rgb(215, 215, 215)">
-                        <Text style={styles.textoBotonEditar}>Editar forma de Pago</Text>
-                    </TouchableHighlight>
-                </View>
-            </View>
-
-            {carrito.map(producto => {
-                return (
-                    <View key={producto._id} style={styles.contenedorProductoAComprar}>
-                        <Image style={styles.fotoDeProducto} source={{uri: producto.idProducto.fotos[0] }} ></Image>
-                        <Text style={styles.textoProductoAComprar}>{producto.idProducto.nombre}</Text>
-                        <Text style={styles.textoUnidades}>Unidades: {producto.cantidad}</Text>
+                        <View style={styles.contenedorTextoDelTitulo}>
+                            <Text style={styles.textoSeccionPrincipal}>Envío</Text>
+                            <Text style={styles.textoSeccionPrincipal}>Gratis</Text>
+                        </View>
+                        <View style={styles.barraDivisora}></View>
+                        <View style={styles.contenedorTextoDelTitulo}>
+                            <Text style={styles.textoSeccionPrincipal}>Total</Text>
+                            <Text style={styles.textoSeccionPrincipal}>$ {precioTotal}</Text>
+                        </View>
+                        <TouchableOpacity style={styles.contenedorBotonConfirmar} underlayColor='black' onPress={() => confirmarCompra()}>
+                            <View style={styles.BotonConfirmar} >
+                                <Text style={styles.textoBotonConfirmar}>Confirmar Compra</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
-                )
-            })}
+                </View>
 
-            <View style={styles.contenedorBotonContinuar}>
-                <TouchableWithoutFeedback onPress={() => confirmarCompra()}>
-                    <Text style={styles.botonContinuar}>Confirmar Compra</Text>
-                </TouchableWithoutFeedback>
-            </View>
-        </ScrollView>
+                <View style={styles.contenedorInfoDeEntrega}>
+                    <View style={styles.iconoEntrega}>
+                        <MaterialCommunityIcons name="truck-fast-outline" size={30} color="rgb(61, 137, 250)" />
+                    </View>
+                    {/* <Icon icon={truckIcon} /> */}
+                    <Text style={styles.textoDireccionDeEntrega}>{infoDelUsuario.direccion}</Text>
+                    <Text style={styles.textoInfoDeEntrega}>{infoDelUsuario.localidad}, {infoDelUsuario.provincia}</Text>
+                    <Text style={styles.textoInfoDeEntrega}>{infoDelUsuario.nombreYApellido} - {infoDelUsuario.telefono}</Text>
+                    <View style={styles.contenedorBotonesEditar}>
+                        <TouchableOpacity style={styles.contenedorBotonEditar} onPress={() => navigation.navigate('metodoDeEnvio')} underlayColor="rgb(215, 215, 215)">
+                            <Text style={styles.textoBotonEditar}>Editar forma de Envio</Text>
+                        </TouchableOpacity>
 
+                        <TouchableOpacity style={styles.contenedorBotonEditar} onPress={() => navigation.navigate('metodoDePago')} underlayColor="rgb(215, 215, 215)">
+                            <Text style={styles.textoBotonEditar}>Editar forma de Pago</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                {carrito.map(producto => {
+                    return (
+                        <View key={producto._id} style={styles.contenedorProductoAComprar}>
+                            <Image style={styles.fotoDeProducto} source={{uri: producto.idProducto.fotos[0] }} ></Image>
+                            <Text style={styles.textoProductoAComprar}>{producto.idProducto.nombre}</Text>
+                            <Text style={styles.textoUnidades}>Unidades: {producto.cantidad}</Text>
+                        </View>
+                    )
+                })}
+
+                    <TouchableOpacity onPress={() => confirmarCompra()}>
+                        <View style={styles.contenedorBotonContinuar}>
+                            <Text style={styles.botonContinuar}>Confirmar Compra</Text>
+                        </View>
+                    </TouchableOpacity>
+            </ScrollView>
+        </>
     )
 }
 
@@ -277,9 +279,9 @@ const styles = StyleSheet.create({
     },
     contenedorBotonContinuar: {
         // backgroundColor: 'red',
-        // marginTop: 30,
+        marginTop: 30,
         // backgroundColor: 'white',
-        paddingTop: 30,
+        paddingTop: 10,
         marginBottom: 30,
         height: 70,
         alignItems: 'center'
@@ -292,7 +294,9 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         textAlign: 'center',
         backgroundColor: 'black',
-        color: 'white'
+        color: 'white',
+        borderRadius: 5,
+        overflow: 'hidden'
     }
 })
 

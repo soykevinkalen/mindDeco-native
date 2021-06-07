@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, View, StyleSheet, Text, TouchableWithoutFeedback } from 'react-native'
+import { ScrollView, View, StyleSheet, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import Header from '../Header'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -54,9 +54,9 @@ const Carrito = (props) => {
             <View style={styles.fixedNav}>
                 <Text style={styles.textTotal}>Total: ${precioTotal} ({articulosTotales} prod.)</Text>
                 
-                <TouchableWithoutFeedback onPress={ () => navigation.navigate('seccionDirecciones')}>
+                <TouchableOpacity onPress={ () => navigation.navigate('seccionDirecciones')}>
                     <Text style={styles.textShop}>FINALIZAR COMPRA</Text>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
         </>
     )

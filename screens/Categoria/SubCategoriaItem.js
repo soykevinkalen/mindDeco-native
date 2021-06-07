@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text } from 'react-native'
+import { Dimensions, ScrollView, View, StyleSheet, ImageBackground, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -43,8 +43,12 @@ const SubCategoriaItem = (props) => {
                     <Text style={styles.productPrice}>${precio}</Text>
                 </View>
                 <View style={styles.actionsContainer}>
-                    <Ionicons name="search-outline" size={26} color="black" onPress={()=>  props.navigation.navigate('producto', {producto: props.producto})}/>
-                    <SimpleLineIcons name="handbag" onPress={ ()=> agregandoProducto() } size={26} color="black" />
+                    <TouchableOpacity onPress={()=>  props.navigation.navigate('producto', {producto: props.producto})}>
+                        <Ionicons name="search-outline" size={26} color="black"/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={ ()=> agregandoProducto() } >
+                        <SimpleLineIcons name="handbag" size={26} color="black" />
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

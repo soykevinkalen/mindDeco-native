@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { ScrollView, StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, TouchableHighlight, TouchableWithoutFeedback, View, Platform } from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import RadioGroup,{Radio} from "react-native-radio-input";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { Icon, InlineIcon } from '@iconify/react';
 // import arrowRightAlt2 from '@iconify-icons/dashicons/arrow-right-alt2';
 import { Entypo } from '@expo/vector-icons'; 
+import Back from '../utilities/Back';
 
 const MetodoDeEnvio = () => {
     const navigation = useNavigation()
@@ -34,9 +35,7 @@ const MetodoDeEnvio = () => {
 
     return (
         <ScrollView style={styles.contenedorGeneral}>
-            <View style={styles.contenedorTituloEnvio}>
-                <Text style={styles.tituloEnvio}>Seleccioná un método de Envio</Text>
-            </View>
+            <Back navigateTo='seccionDirecciones' color='white' bgColor='black' title='Método de envío' />
 
             <View style={styles.contenedorOpcionesDeEnvio}>
                 <TouchableHighlight style={styles.contenedorDeEnvio1} onPress={() => elegirMetodo('recibirCompra')}>
@@ -165,13 +164,18 @@ const styles = StyleSheet.create({
     contenedorEnvioGratis: {
         flex: 1,
         flexDirection: 'row',
-        paddingRight: 20,
+        paddingRight: 10,
         // backgroundColor: "grey",
         justifyContent: 'flex-end'
     },
     textoGratisEnvio: {
         color: '#24AD27',
-        marginRight: 10
+        marginRight: 10,
+        ...Platform.select({
+            ios: {
+                marginTop: 4.5
+            },
+        })
         // backgroundColor: 'green',
     },
     contenedorBotonContinuar: {

@@ -6,6 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
+import Back from '../utilities/Back';
 
 
 const MetodoDePago = () => {
@@ -35,9 +36,7 @@ const MetodoDePago = () => {
 
     return (
         <ScrollView style={styles.contenedorDeSeccion}>
-            <View style={styles.contenedorTituloDeSeccion}>
-                <Text style={styles.titulo}>¿Cómo te gustaria pagar?</Text>
-            </View>
+            <Back navigateTo='seccionDirecciones' color='white' bgColor='black' title='Forma de pago' />
             
             <View style={styles.contenedorOpcionesDePago}>
                 <TouchableHighlight onPress={()=> elegirMetodoDepago('creditCard')} style={styles.contenedorOpcionDePago} underlayColor='#858585'>

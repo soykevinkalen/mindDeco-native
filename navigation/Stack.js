@@ -59,14 +59,3 @@ export const AuthStack = () => {
         </Stack.Navigator>
     )
 }
-
-export const PasarelaStack = () => {
-    return(
-        <Stack.Navigator  >
-            <Stack.Screen name='seccionDirecciones' component={SeccionDirecciones}  />
-            <Stack.Screen name='metodoDeEnvio' component={MetodoDeEnvio} />
-            <Stack.Screen name='metodoDePago' component={MetodoDePago} />
-            <Stack.Screen name='confirmarCompra' component={ConfirmarCompra} />
-        </Stack.Navigator>
-    )
-}
